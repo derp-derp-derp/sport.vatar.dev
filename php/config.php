@@ -10,11 +10,13 @@ set_time_limit(0);
 
 date_default_timezone_set('UTC');
 
+$env = parse_ini_file('../.env');
+
 $conn = new mysqli(
-    $_ENV['MYSQL_HOST'],
-    $_ENV['MYSQL_USER'],
-    $_ENV['MYSQL_PASS'],
-    $_ENV['MYSQL_DATABASE']
+    $env['MYSQL_HOST'],
+    $env['MYSQL_USER'],
+    $env['MYSQL_PASS'],
+    $env['MYSQL_DATABASE']
 );
 
 if($conn->connect_error)

@@ -1,3 +1,5 @@
-<?php
-    
-    echo $_ENV['FLOW_CMD_PATH'];
+<?php require_once 'template/header.php'; ?>
+
+<?php echo 'Coming soon!'; ?>
+
+<?php require_once 'template/footer.php'; ?>
