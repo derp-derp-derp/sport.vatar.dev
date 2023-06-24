@@ -24,7 +24,23 @@ $colors_mid_rgba = array(
     'legendary' => 'rgba(232, 53, 240, .75)'
 );
 
-if(isset($_SERVER['HTTP_HOST']) && stristr($_SERVER['HTTP_HOST'], 'flov.dev')){
+$layers_map = array(
+    'layer_0' => 'sport_flame',
+    'layer_1' => '',
+    'layer_2' => 'trait_body',
+    'layer_3' => 'trait_clothing',
+    'layer_4' => 'trait_nose',
+    'layer_5' => 'trait_mouth',
+    'layer_6' => 'trait_facial hair',
+    'layer_7' => 'trait_hair',
+    'layer_8' => 'trait_eyes',
+    'layer_9' => '',
+    'layer_10' => '',
+    'layer_11' => '',
+    'layer_12' => 'sportbit_accessory'
+);
+
+if(isset($_SERVER['HTTP_HOST']) && stristr($_SERVER['HTTP_HOST'], 'sport.vatar.dev')){
     function curl_request_contents($url, $method = '', $args = array())
     {
         $ch = curl_init();
@@ -79,7 +95,7 @@ if(isset($_SERVER['HTTP_HOST']) && stristr($_SERVER['HTTP_HOST'], 'flov.dev')){
 // https://gist.github.com/dunglas/05d901cb7560d2667d999875322e690a
 function graphql_query(string $endpoint, string $query, array $variables = [], ?string $token = null): array
 {
-    $headers = ['Content-Type: application/json', 'User-Agent: Flov.dev Minimal GraphQL Client'];
+    $headers = ['Content-Type: application/json', 'User-Agent: Sport.vatar.dev Minimal GraphQL Client'];
     if (null !== $token) {
         $headers[] = "Authorization: Bearer $token";
     }
