@@ -40,7 +40,15 @@ $layers_map = array(
     'layer_12' => 'sportbit_accessory'
 );
 
-if(isset($_SERVER['HTTP_HOST']) && stristr($_SERVER['HTTP_HOST'], 'sport.vatar.dev')){
+$num_sportvatars = get_num_sportvatars_in_db();
+$num_common_sportvatars = get_num_sportvatars_in_db('common');
+$num_rare_sportvatars = get_num_sportvatars_in_db('rare');
+$num_epic_sportvatars = get_num_sportvatars_in_db('epic');
+$num_legendary_sportvatars = get_num_sportvatars_in_db('legendary');
+$sportvatars_last_updated_timestamp = get_sportvatars_last_updated_timestamp();
+
+if(isset($_SERVER['HTTP_HOST']) && stristr($_SERVER['HTTP_HOST'], 'sport.vatar.dev'))
+{
     function curl_request_contents($url, $method = '', $args = array())
     {
         $ch = curl_init();
@@ -64,9 +72,12 @@ if(isset($_SERVER['HTTP_HOST']) && stristr($_SERVER['HTTP_HOST'], 'sport.vatar.d
     
         return $data;
     }
-}else{
+}
+else
+{
     // No SSL checks for local development
-    function curl_request_contents($url, $method = '', $args = array()) {
+    function curl_request_contents($url, $method = '', $args = array())
+    {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_HEADER, false);
@@ -77,11 +88,14 @@ if(isset($_SERVER['HTTP_HOST']) && stristr($_SERVER['HTTP_HOST'], 'sport.vatar.d
         curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Cache-Control: no-cache"));
         
-        if($method == 'post'){
+        if($method == 'post')
+        {
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
         }
-        if(count($args) >= 1){
+        
+        if(count($args) >= 1)
+        {
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($args));
         }
         
@@ -96,7 +110,8 @@ if(isset($_SERVER['HTTP_HOST']) && stristr($_SERVER['HTTP_HOST'], 'sport.vatar.d
 function graphql_query(string $endpoint, string $query, array $variables = [], ?string $token = null): array
 {
     $headers = ['Content-Type: application/json', 'User-Agent: Sport.vatar.dev Minimal GraphQL Client'];
-    if (null !== $token) {
+    if (null !== $token)
+    {
         $headers[] = "Authorization: Bearer $token";
     }
 
@@ -106,7 +121,8 @@ function graphql_query(string $endpoint, string $query, array $variables = [], ?
             'header' => $headers,
             'content' => json_encode(['query' => $query, 'variables' => $variables]),
         ]
-    ]))) {
+    ])))
+    {
         $error = error_get_last();
         throw new \ErrorException($error['message'], $error['type']);
     }
@@ -114,10 +130,89 @@ function graphql_query(string $endpoint, string $query, array $variables = [], ?
     return json_decode($data, true);
 }
 
-function general_query( $sql_statement, $return_type = MYSQLI_ASSOC ) {
+function general_query($sql_statement, $return_type = MYSQLI_ASSOC)
+{
     global $conn;
     $result = $conn->query($sql_statement);
     $query_result = $result->fetch_all($return_type);
     $result->close();
     return $query_result;
+}
+
+function get_num_sportvatars_in_db($rarity = '')
+{
+    global $conn;
+    
+    $where = ($rarity !== '') ? " WHERE rarity_name='". $rarity ."'" : "";
+    
+    $sql_count = "SELECT COUNT(*) AS total_sportvatars FROM `sportvatars`".$where;
+
+    if ($result_count = $conn->query($sql_count))
+    {
+        $count = $result_count->fetch_array(MYSQLI_ASSOC);
+        $result_count->close();
+        return $count['total_sportvatars'];
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+function updated_within_interval($interval, $last_updated)
+{    
+    if(strtotime($last_updated) >= strtotime($interval))
+    {
+        return true;
+    }
+    return false;
+}
+
+function get_sportvatars_last_updated_timestamp()
+{
+    global $conn;
+    
+    $sql_max_update_time = "SELECT MAX(last_update_date) as last_update_date FROM `sportvatars`";
+
+    if ($result_max_update_time = $conn->query($sql_max_update_time))
+    {
+        $max_update_time = $result_max_update_time->fetch_array(MYSQLI_ASSOC);
+        $result_max_update_time->close();
+        return $max_update_time['last_update_date'];
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+function num_sportvatars_with_sportbit($sportbit_type_column, $sportbit_id)
+{
+    global $conn;
+    
+    $sql_count = "SELECT COUNT(*) AS sportbit_count FROM `sportvatars` WHERE ".$sportbit_type_column."=".$sportbit_id.";";
+
+    $result_count = $conn->query($sql_count);
+    $count = $result_count->fetch_array(MYSQLI_ASSOC);
+    $result_count->close();
+
+    return $count['sportbit_count'];
+}
+
+function get_trait_rarity_score($trait_template_id)
+{
+    global $conn;
+    global $num_sportvatars;
+    
+    $count_result= $conn->query("SELECT minted FROM templates WHERE flow_id = ". $trait_template_id .";")->fetch_array();
+    $num_sportvatars_with_trait = $count_result['minted'];
+    
+    return number_format((.01/($num_sportvatars_with_trait/$num_sportvatars)),1)+0;
+}
+
+function get_sportbit_rarity_score($num_sportvatars_using_sportbit)
+{
+    global $num_sportvatars;
+    
+    return number_format((.01/($num_sportvatars_using_sportbit/$num_sportvatars)),1)+0;
 }

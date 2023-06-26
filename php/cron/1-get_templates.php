@@ -30,3 +30,4 @@ require_once(__DIR__.'/../helpers.php');
     usleep(5000000);
 
 require_once(__DIR__.'/../close_connections.php');
+exec("php '". dirname(__FILE__) ."/2-add_update_sportvatars.php'");
