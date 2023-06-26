@@ -24,13 +24,6 @@ if($json_all = curl_request_contents($json_all_url))
                 $conn->query("DELETE FROM sportvatars WHERE mint_number = " . $sportvatar['flow_id']);
             }
             
-            $json_single_url = "https://sportvatar.com/api/sportvatars/". $sportvatar['flow_id'];
-            
-            if($json_single = curl_request_contents($json_single_url))
-            {
-                $sportvatar_single = json_decode($json_single, true);
-            }
-            
             $mint_number = $sportvatar['flow_id'];
             $owner_flow_address = $sportvatar['flow_address'];
             $minter_flow_address = $sportvatar['creatorAddress'];
@@ -38,19 +31,13 @@ if($json_all = curl_request_contents($json_all_url))
             $rarity_score_traits = 0;
             $rarity_score_sportbits = 0;
             $rarity_score_total = 0;
-             
             $ability = $sportvatar['ability'];
-            
-            // BEGIN need Luca to add these to /all so can remove the extra single http call
-            @$stat_power = $sportvatar_single['flow_metadata']['stats']['power'];
-            @$stat_speed = $sportvatar_single['flow_metadata']['stats']['speed'];
-            @$stat_endurance = $sportvatar_single['flow_metadata']['stats']['endurance'];
-            @$stat_technique = $sportvatar_single['flow_metadata']['stats']['technique'];
-            @$stat_mental_strength = $sportvatar_single['flow_metadata']['stats']['mental strength'];
-            
-            @$builder_combination = $sportvatar_single['flow_metadata']['combination'];
-            // END need Luca to add these to /all
-            
+            $stat_power = $sportvatar['power'];
+            $stat_speed = $sportvatar['speed'];
+            $stat_endurance = $sportvatar['endurance'];
+            $stat_technique = $sportvatar['technique'];
+            $stat_mental_strength = $sportvatar['mentalStrength'];
+            $builder_combination = $sportvatar['combination'];
             $trait_body_id = $sportvatar['body'];
             $trait_clothing_id = $sportvatar['clothing'];
             $trait_nose_id = $sportvatar['nose'];
