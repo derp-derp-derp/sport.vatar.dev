@@ -15,23 +15,31 @@ body {
     color: #dedede;
 }
 
-table.main-layout-container {
+table#main-layout-container {
     width: 100vw;
     min-height: 100vh;
 }
 
-    tr.header-row,
-    tr.footer-row {
+    tr#header-row,
+    tr#footer-row {
         height: 60px;
         background-color: #1b2023;
         border-bottom: 1px solid #dedede;
         vertical-align: middle;
     }
     
-        tr.header-row td,
-        tr.footer-row td {
+        tr#header-row td,
+        tr#footer-row td {
             text-align: center;
         }
+        
+.faux-responsive-table {
+    width: 100%;
+}
+
+    .faux-responsive-table td {
+        text-align: center;
+    }
 
 a.main-logo {
     text-decoration: none;
@@ -55,4 +63,17 @@ a.text_link:active,
 a.text_link:visited {
     text-decoration: underline;
     color: #ddfc60;
+}
+
+/* faux responsive for tables */
+@media screen and (max-width: 800px) {
+
+    .faux-responsive-table thead,
+    .faux-responsive-table tbody,
+    .faux-responsive-table th,
+    .faux-responsive-table td,
+    .faux-responsive-table tr { 
+        display: block; 
+    }
+    
 }

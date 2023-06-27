@@ -28,3 +28,13 @@ if(!in_array($_SERVER['PHP_SELF'], $static_pages))
 </head>
 
 <body>
+    
+    <table id="main-layout-container">
+        <tr id="header-row">
+            <td>
+                <a href="/" class="main-logo">
+                    <span>SPORT.VATAR<span>.dev</span></span>
+                </a>
+            </td>
+        </tr>
+        <!-- main content row -->
