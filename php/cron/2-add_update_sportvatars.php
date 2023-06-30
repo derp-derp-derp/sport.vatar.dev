@@ -120,4 +120,4 @@ if($json_all = curl_request_contents($json_all_url))
     usleep(5000000);
 
 require_once(__DIR__.'/../close_connections.php');
-exec("php '". dirname(__FILE__) ."/3-update_sportvatars_sportbit_scores.php'");
+exec("php '". dirname(__FILE__) ."/3-update_sportvatars_sportbit_usage.php'");
