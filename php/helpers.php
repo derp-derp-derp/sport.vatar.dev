@@ -3,18 +3,13 @@ require_once('config.php');
 
 $rarity_names = array('common', 'rare', 'epic', 'legendary');
 
+$traits = array('body', 'clothing', 'nose', 'mouth', 'facial_hair', 'hair', 'eyes');
+
 $colors = array(
     'common' => '#8f9099',
     'rare' => '#20eafc',
     'epic' => '#ffeb46',
     'legendary' => '#e835f0'
-);
-
-$colors_muted_rgba = array(
-    'common' => 'rgba(143, 144, 153, .4)',
-    'rare' => 'rgba(32, 234, 252, .4)',
-    'epic' => 'rgba(255, 235, 70, .4)',
-    'legendary' => 'rgba(232, 53, 240, .4)'
 );
 
 $colors_mid_rgba = array(
@@ -24,6 +19,20 @@ $colors_mid_rgba = array(
     'legendary' => 'rgba(232, 53, 240, .75)'
 );
 
+$colors_muted_rgba = array(
+    'common' => 'rgba(143, 144, 153, .4)',
+    'rare' => 'rgba(32, 234, 252, .4)',
+    'epic' => 'rgba(255, 235, 70, .4)',
+    'legendary' => 'rgba(232, 53, 240, .4)'
+);
+
+$colors_extra_light_rgba = array(
+    'common' => 'rgba(143, 144, 153, .1)',
+    'rare' => 'rgba(32, 234, 252, .1)',
+    'epic' => 'rgba(255, 235, 70, .1)',
+    'legendary' => 'rgba(232, 53, 240, .1)'
+);
+
 $layers_map = array(
     'layer_0' => 'sport_flame',
     'layer_1' => '',
@@ -31,7 +40,7 @@ $layers_map = array(
     'layer_3' => 'trait_clothing',
     'layer_4' => 'trait_nose',
     'layer_5' => 'trait_mouth',
-    'layer_6' => 'trait_facial hair',
+    'layer_6' => 'trait_facial_hair',
     'layer_7' => 'trait_hair',
     'layer_8' => 'trait_eyes',
     'layer_9' => '',
@@ -215,4 +224,33 @@ function get_sportbit_rarity_score($num_sportvatars_using_sportbit)
     global $num_sportvatars;
     
     return number_format((.01/($num_sportvatars_using_sportbit/$num_sportvatars)),1)+0;
+}
+
+function iso8601_date($yyyy_mm_dd_hh_mm_ss_date)
+{    
+    $datetime = new DateTime($yyyy_mm_dd_hh_mm_ss_date);
+    return $datetime->format('Y-m-d\TH:i:s.').substr($datetime->format('u'),0,6).'Z';
+}
+
+function human_date($iso8601_date, $short = false)
+{    
+    $iso8601_date = strtotime($iso8601_date);
+    
+    if($short){ return date('M j \'y h:i', $iso8601_date); }
+    
+    return date('D, M j, Y h:i', $iso8601_date) . ' UTC';
+}
+
+function get_template($template_id)
+{
+    global $conn;
+    $sql = "SELECT * FROM templates WHERE flow_id=". $template_id.";";
+
+    if ($result = $conn->query($sql)){
+        $template = $result->fetch_array(MYSQLI_ASSOC);
+        $result->close();
+        return $template;
+    }else{
+        return false;
+    }
 }

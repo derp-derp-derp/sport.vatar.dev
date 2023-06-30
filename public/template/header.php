@@ -6,10 +6,59 @@ $static_pages = array(
     '/index.php',
 );
 
-if(!in_array($_SERVER['PHP_SELF'], $static_pages))
+if(!in_array($_SERVER['PHP_SELF'], $static_pages) || isset($_GET['mint']))
 {
     require_once('../php/config.php');
     require_once('../php/helpers.php');
+}
+
+$sportvatar_index_found = false;
+$sportvatar_index = '';
+$mint = '';
+
+if(isset($_GET['mint']))
+{   
+    $mint = $_GET['mint'];
+}
+
+if(is_numeric($mint) && ($mint <= $num_sportvatars))
+{
+    $sql = "SELECT 
+        t1.*,
+        (
+            SELECT GROUP_CONCAT(
+                CONCAT(
+                    t2.category,
+                    ':',
+                    t2.flow_id,
+                    ':',
+                    t2.minted,
+                    ':',
+                    t2.rarity,
+                    ':',
+                    t2.name
+                )
+            SEPARATOR ',')
+            FROM templates AS t2
+            WHERE t2.flow_id IN(
+                t1.trait_body_id,
+                t1.trait_clothing_id,
+                t1.trait_nose_id,
+                t1.trait_mouth_id,
+                t1.trait_facial_hair_id,
+                t1.trait_hair_id,
+                t1.trait_eyes_id,
+                t1.sportbit_accessory_id
+            )
+        ) AS templates_data
+    FROM sportvatars AS t1
+    WHERE t1.mint_number=". $mint .";";
+    
+    if ($result = $conn->query($sql)){
+        $sportvatar_index = $result->fetch_array(MYSQLI_ASSOC);
+        $sportvatar_index_found = true;
+        $result->close();
+    }
 }
 ?>
 <!DOCTYPE html>
