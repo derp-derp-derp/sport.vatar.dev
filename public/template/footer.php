@@ -1,7 +1,7 @@
         <!-- END main content row -->
         <tr id="footer-row">
-            <td>
-                The information on this website has no warranties or guarantees. <em>Sport.vatar.dev</em> was built for fun by a fan of <a href="https://sportvatar.com" target="_blank" class="text_link">Sportvatar</a>.
+            <td align="center" style="padding: 5px;">
+                This website was built for fun by a fan of <a href="https://sportvatar.com" target="_blank" class="text_link">Sportvatar</a>. The data comes with no guarantee of accuracy.
             </td>
         </tr>
     </table>
