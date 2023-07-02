@@ -44,6 +44,19 @@ h1 { color: <?= $rarity_color ?>; }
     text-align: center;
 }
 
+#abilities_detail {
+    display: none;
+    font-size: 120% !important;
+    text-align: center !important;
+    font-family: monospace !important;
+}
+
+    #abilities_detail_expand {
+        cursor: pointer;
+        font-size: 100%;
+        color: #ddfc60;
+    }
+
 /* faux responsive for tables */
 @media screen and (max-width: 800px) {
     #index-stats-table {
@@ -84,8 +97,6 @@ h1 { color: <?= $rarity_color ?>; }
                     <td>
                         <h1 class="sportvatar">#<?= $mint .' '. strtoupper($sportvatar_index['rarity_name']); ?></h1>
                         <img src="https://sportvatar.com/api/image/<?= $mint; ?>" class="sportvatar" style="border: 3px solid <?= $rarity_color; ?>; background-color: <?= $colors_extra_light_rgba[ $sportvatar_index['rarity_name'] ]; ?>">
-                        
-                        <p>Individual abilities here!</p>
                     </td>
                     <td>
                         <h2 class="sportvatar">RARITY SCORES</h2>
@@ -93,15 +104,24 @@ h1 { color: <?= $rarity_color ?>; }
                         <table id="index-stats-table" class="no-collapse">
                             <tr>
                                 <td>
-                                    Abilities:
+                                    Abilities&nbsp;<a id="abilities_detail_expand">+</a>
                                 </td>
                                 <td style="color: <?= $rarity_color; ?>;">
                                     <?= ($sportvatar_index['ability']/2)+0; ?>
                                 </td>
                             </tr>
                             <tr>
+                                <td colspan="2" id="abilities_detail">
+                                    Power: <?= $sportvatar_index['stat_power']/2; ?><br>
+                                    Speed: <?= $sportvatar_index['stat_speed']/2; ?><br>
+                                    Endurance: <?= $sportvatar_index['stat_endurance']/2; ?><br>
+                                    Technique: <?= $sportvatar_index['stat_technique']/2; ?><br>
+                                    Mental Strength: <?= $sportvatar_index['stat_mental_strength']/2; ?>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                    Traits:
+                                    Traits
                                 </td>
                                 <td style="color: <?= $rarity_color; ?>;">
                                     <?= $sportvatar_index['rarity_score_traits']+0; ?>
@@ -110,7 +130,7 @@ h1 { color: <?= $rarity_color ?>; }
                             <?php if($sportvatar_index['rarity_score_sportbits'] > 0){ ?>
                             <tr>
                                 <td>
-                                    Sportbit:
+                                    Sportbits
                                 </td>
                                 <td style="color: <?= $rarity_color; ?>;">
                                     <?= $sportvatar_index['rarity_score_sportbits']+0; ?>
@@ -119,7 +139,7 @@ h1 { color: <?= $rarity_color ?>; }
                             <?php } // end if($sportvatar_index['rarity_score_sportbits'] > 0) ?>
                             <tr>
                                 <td colspan="2" class="stats-span">
-                                    TOTAL: &#160;
+                                    TOTAL &#160;
                                     <span style="color: <?= $rarity_color; ?>;">
                                         <?= $sportvatar_index['rarity_score_total']+0; ?>
                                     </span>
@@ -218,7 +238,7 @@ h1 { color: <?= $rarity_color ?>; }
                             <?php foreach($traits as $trait){ ?>
                             <tr>
                                 <td style="text-align: left; width: 15%;">
-                                    <strong><?= ucwords(str_replace('_', ' ', $trait)); ?></strong>:
+                                    <strong><?= ucwords(str_replace('_', ' ', $trait)); ?></strong>
                                 </td>
                                 <td style="text-align: left; color: <?= $colors[ $mint_templates['trait_'. $trait]['rarity'] ]; ?>;">
                                     <?= $mint_templates['trait_'. $trait]['name']; ?>
@@ -237,7 +257,7 @@ h1 { color: <?= $rarity_color ?>; }
                         ?>
                         
                         <h2 class="sportvatar">
-                            SPORTBIT&#160;&#160;
+                            SPORTBITS&#160;&#160;
                             <span style="color: <?= $rarity_color; ?>;">
                                 <?= $sportvatar_index['rarity_score_sportbits']+0; ?>
                                  points
@@ -248,7 +268,7 @@ h1 { color: <?= $rarity_color ?>; }
                             <tr><td colspan="2">&#160;</td></tr>
                             <tr>
                                 <td style="text-align: left; width: 15%;">
-                                    <strong>Accessory</strong>:
+                                    <strong>Accessory</strong>
                                 </td>
                                 <td style="text-align: left; color: <?= $colors[ $sportbit_accessory['rarity'] ]; ?>;">
                                     <?= $sportbit_accessory['name']; ?>
@@ -281,5 +301,10 @@ h1 { color: <?= $rarity_color ?>; }
             
         </td>
     </tr>
-            
+<script>
+    $('#abilities_detail_expand').on('click', function(e){
+        e.preventDefault();
+        $('#abilities_detail').toggle();
+    });
+</script>
 <?php require_once 'template/footer.php'; ?>

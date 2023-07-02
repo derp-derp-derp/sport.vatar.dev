@@ -32,11 +32,22 @@ a.main-logo span {
 }
 
 a.text_link,
+a.text_link_bright {
+    text-decoration: underline;
+}
+
+a.text_link,
 a.text_link:link,
 a.text_link:active,
 a.text_link:visited {
-    text-decoration: underline;
     color: #dedede;
+}
+
+a.text_link_bright,
+a.text_link_bright:link,
+a.text_link_bright:active,
+a.text_link_bright:visited {
+    color: #ddfc60;
 }
 
 input:focus,
@@ -112,7 +123,7 @@ table#main-layout-container {
     .faux-responsive-table img.sportvatar {
         width: 90%;
         height: auto;
-        margin: 0 auto;
+        margin: 0 auto 20px auto;
     }
 
 a.main-logo {
