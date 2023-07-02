@@ -14,13 +14,20 @@ h1 { color: <?= $rarity_color ?>; }
 
 #index-stats-table {
     margin: 0 auto;
-    width: 35%;
+    width: 45%;
 }
 
 #index-stats-table tr td {
-    width: 50%;
     padding-top: 15px;
 }
+
+    #index-stats-table tr td:nth-child(1) {
+        width: 70%;
+    }
+    
+    #index-stats-table tr td:nth-child(2) {
+        width: 30%;
+    }
 
 #index-traits-table,
 #index-sportbits-table {
@@ -71,6 +78,7 @@ h1 { color: <?= $rarity_color ?>; }
 }
 </style>
 
+<table width="100%">
     <tr>
         <td valign="top">
             
@@ -90,12 +98,16 @@ h1 { color: <?= $rarity_color ?>; }
             </table>
             </form>
             
-            <?php if($sportvatar_index_found){ ?>
+            <?php
+                
+            if($sportvatar_index_found){
+                $ability = (($sportvatar_index['ability']/2)/5)+0;
+            ?>
             
             <table class="col-3 faux-responsive-table">
                 <tr class="faux-responsive-tr">
                     <td>
-                        <h1 class="sportvatar">#<?= $mint .' '. strtoupper($sportvatar_index['rarity_name']); ?></h1>
+                        <h1 class="sportvatar">#<?= $mint .' '. strtoupper($sportvatar_index['rarity_name']) .' '. $ability; ?></h1>
                         <img src="https://sportvatar.com/api/image/<?= $mint; ?>" class="sportvatar" style="border: 3px solid <?= $rarity_color; ?>; background-color: <?= $colors_extra_light_rgba[ $sportvatar_index['rarity_name'] ]; ?>">
                     </td>
                     <td>
@@ -104,10 +116,10 @@ h1 { color: <?= $rarity_color ?>; }
                         <table id="index-stats-table" class="no-collapse">
                             <tr>
                                 <td>
-                                    Abilities&nbsp;<a id="abilities_detail_expand">+</a>
+                                    Abilities Avg.&nbsp;<a id="abilities_detail_expand">+</a>
                                 </td>
                                 <td style="color: <?= $rarity_color; ?>;">
-                                    <?= ($sportvatar_index['ability']/2)+0; ?>
+                                    <?= $ability; ?>
                                 </td>
                             </tr>
                             <tr>
@@ -294,7 +306,9 @@ h1 { color: <?= $rarity_color ?>; }
                     else
                     {
             ?>
-                    Welcome to Sport.vatar.dev!
+<p align="center"><a href="ranking-top-100-sportvatars.php" class="text_link_bright">ranking-top-100-sportvatars.php</a></p>
+<p align="center"><a href="ranking-top-100-collections.php" class="text_link_bright">ranking-top-100-collections.php</a></p>
+<p align="center"><a href="/?mint=123" class="text_link_bright">/?mint=123</a></p>
             <?php
                     } // end if(isset($_GET['mint']) && ($mint >= $num_sportvatars))
                 } // end if($sportvatar_index_found) ?>
