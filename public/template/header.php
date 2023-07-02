@@ -82,7 +82,7 @@ if(is_numeric($mint) && ($mint <= $num_sportvatars))
 
 <body>
     
-    <table id="main-layout-container">
+    <table width="100%">
         <tr id="header-row">
             <td>
                 <a href="/" class="main-logo">
@@ -90,3 +90,4 @@ if(is_numeric($mint) && ($mint <= $num_sportvatars))
                 </a>
             </td>
         </tr>
+    </table>
