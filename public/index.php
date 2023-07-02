@@ -57,7 +57,7 @@ h1 { color: <?= $rarity_color ?>; }
         color: #ddfc60;
     }
 
-/* faux responsive for tables */
+/* mobile */
 @media screen and (max-width: 800px) {
     #index-stats-table {
         margin: 0 auto;
@@ -301,6 +301,7 @@ h1 { color: <?= $rarity_color ?>; }
             
         </td>
     </tr>
+    </table>
 <script>
     $('#abilities_detail_expand').on('click', function(e){
         e.preventDefault();

@@ -13,7 +13,7 @@ body {
     font-family: "Roboto", sans-serif;
     background-color: #0e1617;
     color: #dedede;
-    overflow-x: hidden;
+    padding-bottom: 60px;
 }
 
 p {
@@ -24,12 +24,49 @@ p {
     margin-right: 0;
 }
 
+/* Hide number input stepper Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide number input stepper Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+div.dataTables_wrapper {
+    width: 98%;
+    margin: 0 auto;
+}
+
 h1,
 h2,
 h3,
 a.main-logo span {
     font-family: "Korolev-Compressed-Bold";
 }
+
+div.content-heading {
+    padding: 15px 15px 5px 15px;
+    background-color: #2d3e41;
+    text-align: center;
+}
+
+    div.content-heading p {
+        color: #a7a7a7;
+    }
+
+    div.content-heading h1::before {
+        content: " - ";
+        color: #ddfc60;
+    }
+    
+    div.content-heading h1::after {
+        content: " - ";
+        color: #ddfc60;
+    }
 
 a.text_link,
 a.text_link_bright {
@@ -84,21 +121,27 @@ input[type=submit] {
 .mobile-only { display: none; }
 
 table#main-layout-container {
-    width: 100vw;
-    max-width: 100vw;
-    min-height: 100vh;
+    width: 100%;
 }
 
-    tr#header-row,
-    tr#footer-row {
+footer {
+    background-color: #1b2023;
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+    tr#header-row {
         height: 60px;
         background-color: #1b2023;
         border-bottom: 1px solid #dedede;
         vertical-align: middle;
     }
     
-        tr#header-row td,
-        tr#footer-row td {
+        tr#header-row td {
             text-align: center;
         }
         
@@ -198,5 +241,10 @@ h3.sportvatar {
     
     .no-collapse td:nth-child(2){
         text-align: right !important;
+    }
+    
+    div.content-heading h1::before,
+    div.content-heading h1::after {
+        content: "";
     }
 }
