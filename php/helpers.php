@@ -56,6 +56,16 @@ $num_epic_sportvatars = get_num_sportvatars_in_db('epic');
 $num_legendary_sportvatars = get_num_sportvatars_in_db('legendary');
 $sportvatars_last_updated_timestamp = get_sportvatars_last_updated_timestamp();
 
+function subpage_heading($heading, $subtitle = '')
+{
+    $heading = '<div class="content-heading">
+        <h1>'. $heading .'</h1>
+        '. ($subtitle !== '' ? '<p>'. $subtitle .'</p>' : '') .'
+    </div>';
+    
+    echo $heading;
+}
+
 if(isset($_SERVER['HTTP_HOST']) && stristr($_SERVER['HTTP_HOST'], 'sport.vatar.dev'))
 {
     function curl_request_contents($url, $method = '', $args = array())
