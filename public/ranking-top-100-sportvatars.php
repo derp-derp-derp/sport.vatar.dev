@@ -54,8 +54,8 @@ img.sportvatar {
                 <td><?= $sportvatar['ability']/2; ?></td>
                 <td><?= $sportvatar['rarity_score_traits']; ?></td>
                 <td><?= $sportvatar['rarity_score_sportbits']; ?></td>
-                <td class="fixed-width-font"><?= human_date($sportvatar['mint_date'], true); ?></td>
-                <td class="fixed-width-font"><?= human_date($sportvatar['last_update_date'], true); ?></td>
+                <td class="fixed-width-font"><?= human_date($sportvatar['mint_date'], true); ?> UTC</td>
+                <td class="fixed-width-font"><?= human_date($sportvatar['last_update_date'], true); ?> UTC</td>
                 <td><a href="./?mint=<?= $sportvatar['mint_number']; ?>" class="text_link_bright">Click Here</a></td>
             </tr>
 <?php
