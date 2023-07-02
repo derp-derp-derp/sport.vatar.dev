@@ -1,5 +1,4 @@
 <?php require_once 'template/header.php'; ?>
-</table>
 
 <style type="text/css">
 
@@ -15,16 +14,16 @@ img.sportvatar {
 }
 </style>
  
-        <div class="content-heading">
-            <h1>Top 100 Sportvatars by Total Rarity Score</h1>
-            <p>Overall rank is out of <?= $num_sportvatars; ?> Sportvatars and includes native abilities scores + custom trait and Sportbit rarity scoring.</p>
-        </div>
-        
 <?php
+    subpage_heading(
+        'Top 100 Sportvatars by Total Rarity Score',
+        'Overall rank is out of '. $num_sportvatars .' Sportvatars and includes native abilities scores + custom trait and Sportbit rarity scoring.'
+    );
+    
     $sportvatars = general_query('SELECT * FROM sportvatars ORDER BY rarity_score_total DESC LIMIT 100;');
 ?>
 
-        <table id="example" class="display nowrap" style="width: 100%;">
+        <table id="data-table" class="display nowrap" style="width: 100%;">
         <thead>
             <tr>
                 <th>Rank</th>
@@ -32,12 +31,12 @@ img.sportvatar {
                 <th>Score<br>Total</th>
                 <th data-orderable="false">Owner</th>
                 <th>Mint No.</th>
-                <th>Abilities Score</th>
-                <th>Traits Score</th>
-                <th>Sportbits Score</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>View</th>
+                <th>Score<br>Abilities</th>
+                <th>Score<br>Traits</th>
+                <th>Score<br>Sportbits</th>
+                <th data-sort="<?= strtotime($sportvatar['mint_date']); ?>">Created</th>
+                <th data-sort="<?= strtotime($sportvatar['last_update_date']); ?>">Updated</th>
+                <th data-orderable="false">View</th>
             </tr>
         </thead>
         <tbody>
@@ -66,15 +65,5 @@ img.sportvatar {
         </tbody>
         </table>
 
-<script>
-$('#example').DataTable( {
-    scrollX: true,
-    paging: false,
-    info: false,
-    searching: false,
-    columnDefs: [
-        {"className": "dt-center", "targets": "_all"}
-    ]
-} );
-</script>
+<script src="./assets/js/data-table-standard.js"></script>
 <?php require_once 'template/footer.php'; ?>
