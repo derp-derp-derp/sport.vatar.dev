@@ -143,7 +143,6 @@ footer {
             text-align: center;
         }
         
-.faux-responsive-table,
 #mint-lookup-form {
     width: 100%;
 }
@@ -159,6 +158,10 @@ footer {
     
     .col-4 td {
         width: 25%;
+    }
+    
+    .col-5 td {
+        width: 20%;
     }
     
     .faux-responsive-table img.sportvatar {
@@ -222,14 +225,15 @@ h3.sportvatar {
     
     .mobile-only { display: block; }
 
-    .faux-responsive-tr td { 
+    .faux-responsive-table td { 
         display: block;
         text-align: center;
         vertical-align: top;
     }
     
     .col-3 td,
-    .col-4 td {
+    .col-4 td,
+    .col-5 td {
         width: 100%;
     }
     
