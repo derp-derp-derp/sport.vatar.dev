@@ -124,6 +124,8 @@ table#main-layout-container {
     width: 100%;
 }
 
+th.dt-center, td.dt-center { text-align: center; }
+
 footer {
     background-color: #1b2023;
     padding: 10px;
