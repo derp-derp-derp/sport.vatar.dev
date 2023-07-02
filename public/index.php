@@ -22,6 +22,12 @@ h1 { color: <?= $rarity_color ?>; }
     padding-top: 15px;
 }
 
+#index-traits-table,
+#index-sportbits-table {
+    margin: 0 auto;
+    width: 50%;
+}
+
 #index-stats-table tr td:nth-child(1) {
     text-align: left;
     font-family: "Korolev-Compressed-Bold";
@@ -37,6 +43,19 @@ h1 { color: <?= $rarity_color ?>; }
     font-size: 225%;
     text-align: center;
 }
+
+/* faux responsive for tables */
+@media screen and (max-width: 800px) {
+    #index-stats-table {
+        margin: 0 auto;
+        width: 50%;
+    }
+    
+    #index-traits-table,
+    #index-sportbits-table {
+        width: 75%;
+    }
+}
 </style>
 
     <tr>
@@ -51,7 +70,7 @@ h1 { color: <?= $rarity_color ?>; }
                     <td>
                         <input type="number" pattern="d\*" max="99999" id="mint" name="mint" maxlength="5" value="<?php echo ($mint == '') ? '' : $mint; ?>">
                     </td>
-                    <td>
+                    <td align="center">
                         <input type="submit" value="GO!">
                     </td>
                 </tr>
@@ -60,16 +79,18 @@ h1 { color: <?= $rarity_color ?>; }
             
             <?php if($sportvatar_index_found){ ?>
             
-            <table class="faux-responsive-table col-3">
-                <tr>
+            <table class="col-3 faux-responsive-table">
+                <tr class="faux-responsive-tr">
                     <td>
                         <h1 class="sportvatar">#<?= $mint .' '. strtoupper($sportvatar_index['rarity_name']); ?></h1>
                         <img src="https://sportvatar.com/api/image/<?= $mint; ?>" class="sportvatar" style="border: 3px solid <?= $rarity_color; ?>; background-color: <?= $colors_extra_light_rgba[ $sportvatar_index['rarity_name'] ]; ?>">
+                        
+                        <p>Individual abilities here!</p>
                     </td>
                     <td>
                         <h2 class="sportvatar">RARITY SCORES</h2>
                         
-                        <table id="index-stats-table">
+                        <table id="index-stats-table" class="no-collapse">
                             <tr>
                                 <td>
                                     Abilities:
@@ -86,6 +107,7 @@ h1 { color: <?= $rarity_color ?>; }
                                     <?= $sportvatar_index['rarity_score_traits']+0; ?>
                                 </td>
                             </tr>
+                            <?php if($sportvatar_index['rarity_score_sportbits'] > 0){ ?>
                             <tr>
                                 <td>
                                     Sportbit:
@@ -94,6 +116,7 @@ h1 { color: <?= $rarity_color ?>; }
                                     <?= $sportvatar_index['rarity_score_sportbits']+0; ?>
                                 </td>
                             </tr>
+                            <?php } // end if($sportvatar_index['rarity_score_sportbits'] > 0) ?>
                             <tr>
                                 <td colspan="2" class="stats-span">
                                     TOTAL: &#160;
@@ -131,8 +154,6 @@ h1 { color: <?= $rarity_color ?>; }
                                 <?= human_date($sportvatar_index['last_update_date']); ?>
                             </span>
                         </p>
-                        
-                        <br>
                         
                         <p>
                             <a href="https://sportvatar.com/collection/<?= $sportvatar_index['owner_flow_address']; ?>" class="text_link" target="_blank">View this Sportvatar owner's collection.</a>
@@ -183,6 +204,7 @@ h1 { color: <?= $rarity_color ?>; }
     //echo highlight_string(print_r($mint_templates,true),true);
 ?>
                     <td>
+                        <br class="mobile-only">
                         <h2 class="sportvatar">
                             TRAITS&#160;&#160;
                             <span style="color: <?= $rarity_color; ?>;">
@@ -191,7 +213,7 @@ h1 { color: <?= $rarity_color ?>; }
                             </span>
                         </h2>
                         
-                        <table style="margin: 0 auto; width: 50%;">
+                        <table id="index-traits-table" class="no-collapse">
                             <tr><td colspan="2">&#160;</td></tr>
                             <?php foreach($traits as $trait){ ?>
                             <tr>
@@ -210,7 +232,7 @@ h1 { color: <?= $rarity_color ?>; }
                             <?php } // end foreach $traits ?>
                         </table>
                         <?php
-                            if($sportvatar_index['sportbit_accessory_id'] > 0) {
+                            if($sportvatar_index['rarity_score_sportbits'] > 0){
                                 $sportbit_accessory = get_template($sportvatar_index['sportbit_accessory_id']);
                         ?>
                         
@@ -222,7 +244,7 @@ h1 { color: <?= $rarity_color ?>; }
                             </span>
                         </h2>
                         
-                        <table style="margin: 0 auto; width: 50%;">
+                        <table id="index-sportbits-table" class="no-collapse">
                             <tr><td colspan="2">&#160;</td></tr>
                             <tr>
                                 <td style="text-align: left; width: 15%;">
@@ -239,7 +261,7 @@ h1 { color: <?= $rarity_color ?>; }
                             <tr><td colspan="2">&#160;</td></tr>
                         </table>
                         
-                        <?php } // end if($sportvatar_index['sportbit_accessory_id'] > 0) ?>
+                        <?php } // end if($sportvatar_index['rarity_score_sportbits'] > 0) ?>
                     </td>
                 </tr>
             </table>
@@ -247,7 +269,7 @@ h1 { color: <?= $rarity_color ?>; }
             <?php
                 }else{
                     if(isset($_GET['mint']) && ($mint >= $num_sportvatars)){
-                        echo 'No Sportvatar #'. $mint .' found.<br>Please double-check the mint #.<br><br>If it\'s a new mint, try again in 15 minutes.';
+                        echo '<p align="center">No Sportvatar #'. $mint .' found.<br>Please double-check the mint #.<br><br>If it\'s a new mint, try again in 15 minutes.</p>';
                     }
                     else
                     {
