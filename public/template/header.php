@@ -74,6 +74,8 @@ if(is_numeric($mint) && ($mint <= $num_sportvatars))
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="./assets/css/custom.css">
+    
+    <script src="./assets/js/jquery-3.7.0.min.js"></script>
 </head>
 
 <body>
