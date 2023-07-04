@@ -73,8 +73,9 @@
 
             if ($index < $total_items)
             {
-                echo '<a class="content-card '. $sportbits[$index]['rarity'] .'" href="#" id="sportbit'. $sportbits[$index]['flow_id'] .'">';
-                echo '    <img src="https://sportvatar.com/api/image/template/'. $sportbits[$index]['flow_id'] .'">';
+                $sportbit_id = $sportbits[$index]['flow_id'];
+                echo '<a class="content-card '. $sportbits[$index]['rarity'] .'" href="sportbit-sportvatars.php?sportbit_id='. $sportbit_id .'" id="sportbit'. $sportbit_id .'">';
+                echo '    <img src="https://sportvatar.com/api/image/template/'. $sportbit_id .'">';
                 echo '    <span>'. ucwords($sportbits[$index]['rarity']) .'<br>'. $sportbits[$index]['name'] .'</span>';
                 echo '</a>';
             }
