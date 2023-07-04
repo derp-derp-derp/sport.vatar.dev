@@ -4,7 +4,7 @@ require_once(__DIR__.'/../helpers.php');
 
     $sql = "SELECT * FROM sportvatars";
 
-    if ($result = $conn->query($sql))
+    if($result = $conn->query($sql))
     {
         $sportvatars = $result->fetch_all(MYSQLI_ASSOC);
         
@@ -32,7 +32,7 @@ require_once(__DIR__.'/../helpers.php');
             $rarity_score_traits = ($trait_body_score + $trait_clothing_score + $trait_nose_score + $trait_mouth_score + $trait_facial_hair_score + $trait_hair_score + $trait_eyes_score);
             $rarity_score_sportbits = $sportbit_accessory_score;
             
-            $rarity_score_total = ($rarity_score_traits + $rarity_score_sportbits + (($sportvatar['ability'] / 2)/5));
+            $rarity_score_total = ($rarity_score_traits + $rarity_score_sportbits + ($sportvatar['ability']/2/5));
 
             $updates_queries .= "UPDATE sportvatars SET rarity_score_traits = '".$rarity_score_traits."', rarity_score_sportbits = '".$rarity_score_sportbits."', rarity_score_total = '".$rarity_score_total."' WHERE mint_number = ".$sportvatar['mint_number'].";";
         }
