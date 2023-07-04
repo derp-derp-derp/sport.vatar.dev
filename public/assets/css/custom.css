@@ -164,6 +164,10 @@ footer {
         width: 20%;
     }
     
+    .col-10 td {
+        width: 10%;
+    }
+    
     .faux-responsive-table img.sportvatar {
         width: 90%;
         height: auto;
@@ -233,7 +237,8 @@ h3.sportvatar {
     
     .col-3 td,
     .col-4 td,
-    .col-5 td {
+    .col-5 td,
+    .col-10 td {
         width: 100%;
     }
     
