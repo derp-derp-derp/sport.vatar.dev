@@ -143,7 +143,8 @@ footer {
             text-align: center;
         }
         
-#mint-lookup-form {
+#mint-lookup-form,
+.faux-responsive-table {
     width: 100%;
 }
 
