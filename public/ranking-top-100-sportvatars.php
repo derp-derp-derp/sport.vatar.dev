@@ -31,7 +31,7 @@ img.sportvatar {
                 <th>Score<br>Total</th>
                 <th data-orderable="false">Owner</th>
                 <th>Mint No.</th>
-                <th>Score<br>Abilities</th>
+                <th>Abilities<br>Average</th>
                 <th>Score<br>Traits</th>
                 <th>Score<br>Sportbits</th>
                 <th>Created</th>
@@ -51,7 +51,7 @@ img.sportvatar {
                 <td><?= $sportvatar['rarity_score_total']; ?></td>
                 <td class="fixed-width-font"><?= $sportvatar['owner_flow_address']; ?></td>
                 <td><?= $sportvatar['mint_number']; ?></td>
-                <td><?= $sportvatar['ability']/2; ?></td>
+                <td><?= $sportvatar['ability']/2/5; ?></td>
                 <td><?= $sportvatar['rarity_score_traits']; ?></td>
                 <td><?= $sportvatar['rarity_score_sportbits']; ?></td>
                 <td data-sort="<?= strtotime($sportvatar['mint_date']); ?>" class="fixed-width-font"><?= human_date($sportvatar['mint_date'], true); ?> UTC</td>
