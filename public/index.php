@@ -94,6 +94,12 @@ h1 { color: <?= $rarity_color ?>; }
         font-size: 100%;
         color: #ddfc60;
     }
+    
+.welcome-message {
+    color: #ffffff;
+    text-align: center;
+    padding: 0 0 15px 0;
+}
 
 /* mobile */
 @media screen and (max-width: 800px) {
@@ -110,6 +116,10 @@ h1 { color: <?= $rarity_color ?>; }
     a.main-navigation-card {
         margin-top: 15px;
         height: 60px;
+    }
+    
+    .welcome-message {
+        padding: 0 0 5px 0;
     }
 }
 </style>
@@ -342,7 +352,8 @@ h1 { color: <?= $rarity_color ?>; }
                     else
                     {
             ?>
-            <h1 style="color: #ddfc60; text-align: center; padding: 0 0 10px 0;">Welcome! Enter mint # &uarr; or select &darr;</h1>
+            
+            <h1 class="welcome-message">Enter mint # &uarr; or select &darr;</h1>
             
             <table class="faux-responsive-table col-5 index-navigation">
                 <tr>
@@ -355,7 +366,10 @@ h1 { color: <?= $rarity_color ?>; }
                 <tr>
                     <td><a class="main-navigation-card" href="#">Least Used Traits</a></td>
                     <td><a class="main-navigation-card" href="#">Most Used Traits</a></td>
-                    <td>&#160;</td>
+                    <td style="vertical-align: middle !important;">
+                        <h2 style="padding: 25px 0; color: #ffffff;" class="mobile-only">- More fun coming soon! -</h2>
+                        &#160;
+                    </td>
                     <td>&#160;</td>
                     <td>&#160;</td>
                 </tr>
