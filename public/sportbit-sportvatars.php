@@ -67,7 +67,7 @@ img.sportvatar {
     {
 ?>
             <tr>
-                <td style="color: <?= $colors[ $sportvatar['rarity_name'] ]; ?>; text-align: center;"><?= $sportvatar['rarity_name']; ?><br><img src="https://sportvatar.com/api/image/<?= $sportvatar['mint_number']; ?>" style="border-color: <?= $colors[ $sportvatar['rarity_name'] ]; ?>" class="sportvatar"></td>
+                <td style="color: <?= $colors[ $sportvatar['rarity_name'] ]; ?>; text-align: center;"><?= $sportvatar['rarity_name']; ?><br><a href="/?mint=<?= $sportvatar['mint_number']; ?>"><img src="https://sportvatar.com/api/image/<?= $sportvatar['mint_number']; ?>" style="border-color: <?= $colors[ $sportvatar['rarity_name'] ]; ?>" class="sportvatar"></a></td>
                 <td><?= $sportvatar['rarity_score_total']; ?></td>
                 <td class="fixed-width-font"><?= $sportvatar['owner_flow_address']; ?></td>
                 <td><?= $sportvatar['mint_number']; ?></td>
@@ -84,5 +84,13 @@ img.sportvatar {
         </tbody>
         </table>
 
-<script src="./assets/js/data-table-standard.js"></script>
+<script src="./assets/js/data-table-standard-config.js"></script>
+<script>
+$(document).ready(function(){
+    data_table_conf.language = { emptyTable: "D'oh! No Sportvatars have this Sportbit equipped." };
+
+    $('#data-table').DataTable( data_table_conf );
+
+});
+</script>
 <?php require_once 'template/footer.php'; ?>

@@ -48,6 +48,11 @@ a.main-logo span {
     font-family: "Korolev-Compressed-Bold";
 }
 
+.dataTables_empty {
+    font-size: 150%;
+    padding: 30px !important;
+}
+
 div.content-heading {
     padding: 15px 15px 5px 15px;
     background-color: #2d3e41;
@@ -255,4 +260,6 @@ h3.sportvatar {
     div.content-heading h1::after {
         content: "";
     }
+    
+    .dataTables_empty { text-align: left !important; }
 }

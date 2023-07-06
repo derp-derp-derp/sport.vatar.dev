@@ -73,5 +73,10 @@ img.sportvatar {
         </tbody>
         </table>
 
-<script src="./assets/js/data-table-standard.js"></script>
+<script src="./assets/js/data-table-standard-config.js"></script>
+<script>
+$(document).ready(function(){
+    $('#data-table').DataTable( data_table_conf );
+});
+</script>
 <?php require_once 'template/footer.php'; ?>
