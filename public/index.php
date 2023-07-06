@@ -356,8 +356,8 @@ h1 { color: <?= $rarity_color ?>; }
     </tr>
     <tr>
         <td><a class="main-navigation-card" href="sportbits.php">Sportvatars by Sportbit</a></td>
+        <td><a class="main-navigation-card" href="gallery-famous.php">Famous Sportvatars</a></td>
         <td><a class="main-navigation-card" href="#">Your Sportvatar (Log In)</a></td>
-        <td>&#160;</td>
         <td>&#160;</td>
         <td>&#160;</td>
     </tr>
