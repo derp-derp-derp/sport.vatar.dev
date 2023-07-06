@@ -109,11 +109,8 @@ h1 { color: <?= $rarity_color ?>; }
     
     a.main-navigation-card {
         margin-top: 15px;
+        height: 60px;
     }
-    
-        table.index-navigation tr td:nth-child(1) a {
-            margin-top: 0;
-        }
 }
 </style>
 
@@ -345,23 +342,25 @@ h1 { color: <?= $rarity_color ?>; }
                     else
                     {
             ?>
+            <h1 style="color: #ddfc60; text-align: center; padding: 0 0 10px 0;">Welcome! Enter mint # &uarr; or select &darr;</h1>
             
-<table class="faux-responsive-table col-5 index-navigation">
-    <tr>
-        <td><a class="main-navigation-card" href="ranking-top-100-sportvatars.php">Top 100 Sportvatars</a></td>
-        <td><a class="main-navigation-card" href="ranking-top-100-collections.php">Top 100 Collections</a></td>
-        <td><a class="main-navigation-card" href="#">Sportvatars by Trait</a></td>
-        <td><a class="main-navigation-card" href="#">Least Used Traits</a></td>
-        <td><a class="main-navigation-card" href="#">Most Used Traits</a></td>
-    </tr>
-    <tr>
-        <td><a class="main-navigation-card" href="sportbits.php">Sportvatars by Sportbit</a></td>
-        <td><a class="main-navigation-card" href="gallery-famous.php">Famous Sportvatars</a></td>
-        <td><a class="main-navigation-card" href="#">Your Sportvatar (Log In)</a></td>
-        <td>&#160;</td>
-        <td>&#160;</td>
-    </tr>
-</table>
+            <table class="faux-responsive-table col-5 index-navigation">
+                <tr>
+                    <td><a class="main-navigation-card" href="ranking-top-100-sportvatars.php">Top 100 Sportvatars</a></td>
+                    <td><a class="main-navigation-card" href="ranking-top-100-collections.php">Top 100 Collections</a></td>
+                    <td><a class="main-navigation-card" href="sportbits.php">Sportvatars by Sportbit</a></td>
+                    <td><a class="main-navigation-card" href="gallery-famous.php">Famous Sportvatars</a></td>
+                    <td><a class="main-navigation-card" href="#">Your Sportvatar (Log In)</a></td>
+                </tr>
+                <tr>
+                    <td><a class="main-navigation-card" href="#">Least Used Traits</a></td>
+                    <td><a class="main-navigation-card" href="#">Most Used Traits</a></td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+            </table>
+            
             <?php
                     } // end if(isset($_GET['mint']) && ($mint >= $num_sportvatars))
                 } // end if($sportvatar_index_found) ?>
