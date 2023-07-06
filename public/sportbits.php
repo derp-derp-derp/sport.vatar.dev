@@ -45,6 +45,7 @@
 
 /* mobile */
 @media screen and (max-width: 800px) {
+    .content-card { height: 60px; }
 }
 </style>
 
