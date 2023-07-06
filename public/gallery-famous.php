@@ -66,6 +66,7 @@
         array('mint' => 531, 'rarity' => 'common', 'name' => 'Dan Marino'),
         
         'Baseball',
+        array('mint' => 461, 'rarity' => 'rare', 'name' => 'Derek Jeter'),
         array('mint' => 537, 'rarity' => 'rare', 'name' => 'Barry Bonds'),
         array('mint' => 734, 'rarity' => 'rare', 'name' => 'Randy Johnson'),
         array('mint' => 793, 'rarity' => 'common', 'name' => 'Ken Griffey Jr.'),
