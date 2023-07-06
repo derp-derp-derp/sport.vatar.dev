@@ -367,7 +367,7 @@ h1 { color: <?= $rarity_color ?>; }
                     <td><a class="main-navigation-card" href="#">Least Used Traits</a></td>
                     <td><a class="main-navigation-card" href="#">Most Used Traits</a></td>
                     <td style="vertical-align: middle !important;">
-                        <h2 style="padding: 25px 0; color: #ffffff;" class="mobile-only">- More fun coming soon! -</h2>
+                        <h2 style="padding: 25px 0 0 0; color: #ffffff;" class="mobile-only">- More fun coming soon! -</h2>
                         &#160;
                     </td>
                     <td>&#160;</td>
