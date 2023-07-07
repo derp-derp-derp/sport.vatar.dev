@@ -99,8 +99,10 @@
         array('mint' => 371, 'rarity' => 'rare',   'name' => 'Ivan Drago'),
         array('mint' => 525, 'rarity' => 'common', 'name' => 'Spike (Little Giants)'),
         array('mint' => 526, 'rarity' => 'common', 'name' => 'Charlie Conway (Mighty Ducks)'),
-        array('mint' => 527, 'rarity' => 'common', 'name' => 'Happy Gilmore (Happy Gilmore)'),
+        array('mint' => 527, 'rarity' => 'common', 'name' => 'Happy Gilmore'),
         array('mint' => 530, 'rarity' => 'common', 'name' => 'Bobby Boucher Jr. (Waterboy)'),
+        array('mint' => 428, 'rarity' => 'rare',   'name' => 'Stewie Griffin (Family Guy)'),
+        array('mint' => 429, 'rarity' => 'rare',   'name' => 'Ned Flanders (The Simpsons)'),
         
         'Fighting',
         array('mint' => 534, 'rarity' => 'common', 'name' => 'Tyson Fury'),
