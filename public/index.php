@@ -10,6 +10,21 @@ if($sportvatar_index_found)
 ?>
 
 <style type="text/css">
+img.sportvatar {
+    width: 90%;
+    height: auto;
+    margin: 0 auto 10px auto;
+}
+
+div.highlights_container {
+    border: 1px dashed <?= $rarity_color; ?>;
+    margin: 0 auto 20px auto;   
+    padding: 20px;
+    width: calc(90% - 38px);
+    height: auto;
+    line-height: 28px;
+}
+    
 .main-navigation-card {
     border: 1px solid #ddfc60;
     border-radius: 10px;
@@ -147,6 +162,7 @@ h1 { color: <?= $rarity_color ?>; }
             <?php
                 
             if($sportvatar_index_found){
+                $highlights = generate_highlights($sportvatar_index);
                 $ability = (($sportvatar_index['ability']/2)/5)+0;
             ?>
             
@@ -155,6 +171,17 @@ h1 { color: <?= $rarity_color ?>; }
                     <td>
                         <h1 class="sportvatar">#<?= $mint .' '. strtoupper($sportvatar_index['rarity_name']) .' '. $ability; ?></h1>
                         <img src="https://sportvatar.com/api/image/<?= $mint; ?>" class="sportvatar" style="border: 3px solid <?= $rarity_color; ?>; background-color: <?= $colors_extra_light_rgba[ $sportvatar_index['rarity_name'] ]; ?>">
+                        <?php if(count($highlights) > 0){ ?>
+                        
+                        <h2 style="color: <?= $rarity_color; ?>; margin-bottom: 5px;">☆ &#160; HIGHLIGHTS &#160; ☆</h2>
+                        
+                        <div class="highlights_container">
+                            <?php foreach($highlights as $highlight){ ?>
+                                <span style="color: <?= $rarity_color; ?>;">★</span> <?= $highlight; ?><br>
+                            <?php } // end if(count($highlights) > 1) ?>
+                        </div>
+                        
+                        <?php } // end foreach($highlights as $highlight) ?>
                     </td>
                     <td>
                         <h2 class="sportvatar">RARITY SCORES</h2>
@@ -233,6 +260,8 @@ h1 { color: <?= $rarity_color ?>; }
                             </span>
                         </p>
                         
+                        <br>
+                        
                         <p>
                             <a href="https://sportvatar.com/collection/<?= $sportvatar_index['owner_flow_address']; ?>" class="text_link" target="_blank">View this Sportvatar owner's collection.</a>
                         </p>
@@ -304,7 +333,7 @@ h1 { color: <?= $rarity_color ?>; }
                             </tr>
                             <tr>
                                 <td style="text-align: left; width: 15%;"><?= get_trait_rarity_score($sportvatar_index['trait_'. $trait .'_id'])+0; ?> points</td>
-                                <td style="text-align: left;">(<a href="#" class="text_link">on <?= $mint_templates['trait_'. $trait]['num_used']; ?> other Sportvatars</a>)</td>
+                                <td style="text-align: left;">(on <?= $mint_templates['trait_'. $trait]['num_used']; ?> other Sportvatars)</td>
                             </tr>
                             <tr><td colspan="2">&#160;</td></tr>
                             <?php } // end foreach $traits ?>
@@ -334,7 +363,7 @@ h1 { color: <?= $rarity_color ?>; }
                             </tr>
                             <tr>
                                 <td style="text-align: left; width: 15%;"><?= get_sportbit_rarity_score($sportvatar_index['sportbit_accessory_other_sportvatar_count']+1); ?> points</td>
-                                <td style="text-align: left;">(<a href="#" class="text_link">on <?= $sportvatar_index['sportbit_accessory_other_sportvatar_count']; ?> other Sportvatars</a>)</td>
+                                <td style="text-align: left;">(<a href="sportbit-sportvatars.php?sportbit_id=<?= $sportvatar_index['sportbit_accessory_id']; ?>" class="text_link">on <?= $sportvatar_index['sportbit_accessory_other_sportvatar_count']; ?> other Sportvatars</a>)</td>
                             </tr>
                             <tr><td colspan="2">&#160;</td></tr>
                         </table>

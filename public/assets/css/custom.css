@@ -173,12 +173,6 @@ footer {
     .col-10 td {
         width: 10%;
     }
-    
-    .faux-responsive-table img.sportvatar {
-        width: 90%;
-        height: auto;
-        margin: 0 auto 20px auto;
-    }
 
 a.main-logo {
     text-decoration: none;
