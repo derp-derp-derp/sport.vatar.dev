@@ -52,7 +52,7 @@ img.sportvatar {
                 <th data-orderable="false">Preview</th>
                 <th>Score<br>Total</th>
                 <th data-orderable="false">Owner</th>
-                <th>Mint No.</th>
+                <th>Mint #</th>
                 <th>Abilities<br>Average</th>
                 <th>Score<br>Traits</th>
                 <th>Score<br>Sportbits</th>
@@ -70,7 +70,7 @@ img.sportvatar {
                 <td style="color: <?= $colors[ $sportvatar['rarity_name'] ]; ?>; text-align: center;"><?= $sportvatar['rarity_name']; ?><br><a href="/?mint=<?= $sportvatar['mint_number']; ?>"><img src="https://sportvatar.com/api/image/<?= $sportvatar['mint_number']; ?>" style="border-color: <?= $colors[ $sportvatar['rarity_name'] ]; ?>" class="sportvatar"></a></td>
                 <td><?= $sportvatar['rarity_score_total']; ?></td>
                 <td class="fixed-width-font"><?= $sportvatar['owner_flow_address']; ?></td>
-                <td><?= $sportvatar['mint_number']; ?></td>
+                <td data-sort="<?= $sportvatar['mint_number']; ?>">#<?= $sportvatar['mint_number']; ?></td>
                 <td><?= $sportvatar['ability']/2/5; ?></td>
                 <td><?= $sportvatar['rarity_score_traits']; ?></td>
                 <td><?= $sportvatar['rarity_score_sportbits']; ?></td>
