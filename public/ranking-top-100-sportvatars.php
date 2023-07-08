@@ -30,6 +30,7 @@ img.sportvatar {
                 <th data-orderable="false">Preview</th>
                 <th>Score<br>Total</th>
                 <th data-orderable="false">Owner</th>
+                <th data-orderable="false">.find<br>name</th>
                 <th>Mint #</th>
                 <th>Abilities<br>Average</th>
                 <th>Score<br>Traits</th>
@@ -50,6 +51,7 @@ img.sportvatar {
                 <td style="color: <?= $colors[ $sportvatar['rarity_name'] ]; ?>; text-align: center;"><?= $sportvatar['rarity_name']; ?><br><a href="/?mint=<?= $sportvatar['mint_number']; ?>"><img src="https://sportvatar.com/api/image/<?= $sportvatar['mint_number']; ?>" style="border-color: <?= $colors[ $sportvatar['rarity_name'] ]; ?>" class="sportvatar"></a></td>
                 <td><?= $sportvatar['rarity_score_total']; ?></td>
                 <td class="fixed-width-font"><?= $sportvatar['owner_flow_address']; ?></td>
+                <td class="fixed-width-font find_name_<?= $sportvatar['owner_flow_address']; ?>"><a href="javascript:void(0)" class="get_find_name text_link" data-flow-address="<?= $sportvatar['owner_flow_address']; ?>">Lookup</a></td>
                 <td data-sort="<?= $sportvatar['mint_number']; ?>">#<?= $sportvatar['mint_number']; ?></td>
                 <td><?= $sportvatar['ability']/2/5; ?></td>
                 <td><?= $sportvatar['rarity_score_traits']; ?></td>
@@ -66,6 +68,7 @@ img.sportvatar {
         </table>
 
 <script src="./assets/js/data-table-standard-config.js"></script>
+<script src="./assets/js/find-reverse-lookup-ajax.js"></script>
 <script>
 $(document).ready(function(){
     $('#data-table').DataTable( data_table_conf );

@@ -40,6 +40,7 @@ img.sportvatar {
             <tr>
                 <th>Rank</th>
                 <th data-orderable="false">Owner</th>
+                <th data-orderable="false">.find<br>name</th>
                 <th>Score Total</th>
                 <th>Num.<br>Sportvatars</th>
                 <th>Num. Common<br>Sportvatars</th>
@@ -58,6 +59,7 @@ img.sportvatar {
             <tr>
                 <td><?= $rank; ?></td>
                 <td class="fixed-width-font"><?= $collection['owner_flow_address']; ?></td>
+                <td class="fixed-width-font find_name_<?= $collection['owner_flow_address']; ?>"><a href="javascript:void(0)" class="get_find_name text_link" data-flow-address="<?= $collection['owner_flow_address']; ?>">Lookup</a></td>
                 <td><?= $collection['total_score']; ?></td>
                 <td><?= $collection['num_sportvatars']; ?></td>
                 <td><?= $collection['common_count']; ?></td>
@@ -74,6 +76,7 @@ img.sportvatar {
         </table>
 
 <script src="./assets/js/data-table-standard-config.js"></script>
+<script src="./assets/js/find-reverse-lookup-ajax.js"></script>
 <script>
 $(document).ready(function(){
     $('#data-table').DataTable( data_table_conf );

@@ -160,6 +160,21 @@ function general_query($sql_statement, $return_type = MYSQLI_ASSOC)
     return $query_result;
 }
 
+function is_valid_flow_address($flow_address)
+{    
+    if(preg_match('/^0x[a-fA-F0-9]{16}$/', $flow_address) == 1){
+        return true;
+    }
+    return false;
+}
+
+function json_response($arr)
+{
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($arr);
+    exit;
+}
+
 function get_num_sportvatars_in_db($rarity = '')
 {
     global $conn;
