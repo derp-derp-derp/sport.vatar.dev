@@ -75,9 +75,11 @@ if(is_numeric($mint) && ($mint <= $num_sportvatars))
     
     <link rel="stylesheet" href="./assets/css/custom.css">
     <link rel="stylesheet" href="./assets/css/datatables.min.css">
+    <link rel="stylesheet" href="./assets/css/fixedHeader.dataTables.min.css">
     
     <script src="./assets/js/jquery-3.7.0.min.js"></script>
     <script src="./assets/js/datatables.min.js"></script>
+    <script src="./assets/js/dataTables.fixedHeader.min.js"></script>
 </head>
 
 <body>

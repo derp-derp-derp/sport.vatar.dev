@@ -3,6 +3,7 @@ let data_table_conf = {
     paging: false,
     info: false,
     searching: false,
+    fixedHeader: true,
     columnDefs: [
         {"className": "dt-center", "targets": "_all"}
     ]
