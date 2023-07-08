@@ -63,6 +63,7 @@
     $sportvatars = array(
         'American Football',
         array('mint' => 253, 'rarity' => 'common', 'name' => 'Walter Payton'),
+        array('mint' => 164, 'rarity' => 'common', 'name' => 'Dan Marino'),
         array('mint' => 531, 'rarity' => 'common', 'name' => 'Dan Marino'),
         
         'Baseball',
@@ -70,6 +71,7 @@
         array('mint' => 537, 'rarity' => 'rare', 'name' => 'Barry Bonds'),
         array('mint' => 734, 'rarity' => 'rare', 'name' => 'Randy Johnson'),
         array('mint' => 793, 'rarity' => 'common', 'name' => 'Ken Griffey Jr.'),
+        array('mint' => 205, 'rarity' => 'common', 'name' => 'Mike Schmidt'),
         
         'Basketball',
         array('mint' => 295, 'rarity' => 'common', 'name' => 'Austin Reaves'),
@@ -121,6 +123,9 @@
         
         'Golf',
         array('mint' => 767, 'rarity' => 'common', 'name' => 'Tiger Woods'),
+        
+        'Ice Skating',
+        array('mint' => 268, 'rarity' => 'common', 'name' => 'Tonya Harding'),
         
         'Racing',
         array('mint' => 171, 'rarity' => 'common', 'name' => 'Max Verstappen'),
