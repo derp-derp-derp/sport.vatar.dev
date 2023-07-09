@@ -8,8 +8,6 @@ if($json_all = curl_request_contents($json_all_url))
 {
     $sportvatars = json_decode($json_all, true);
     
-    $number_of_sportvatars = count($sportvatars);
-    
     foreach($sportvatars as $sportvatar)
     {
         $sportvatar_is_new = $sportvatar['flow_id'] > $num_sportvatars;
