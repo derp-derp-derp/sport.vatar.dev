@@ -41,8 +41,7 @@ CREATE TABLE `sportvatars` (
   `sportbit_accessory_id` int(11) NOT NULL,
   `sportbit_accessory_other_sportvatar_count` int(11) NOT NULL,
   `mint_date` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `last_update_date` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `find_name` varchar(288) COLLATE utf8mb4_general_ci NOT NULL
+  `last_update_date` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 ALTER TABLE `sportvatars`
@@ -66,6 +65,5 @@ ALTER TABLE `sportvatars`
   ADD KEY `trait_facial_hair_id_index` (`trait_facial_hair_id`),
   ADD KEY `trait_hair_id_index` (`trait_hair_id`),
   ADD KEY `trait_eyes_id_index` (`trait_eyes_id`),
-  ADD KEY `sportbit_accessory_id_index` (`sportbit_accessory_id`),
-  ADD KEY `find_name_index` (`find_name`);
+  ADD KEY `sportbit_accessory_id_index` (`sportbit_accessory_id`);
 COMMIT;
