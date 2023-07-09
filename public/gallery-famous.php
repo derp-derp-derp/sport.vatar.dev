@@ -20,6 +20,8 @@
 
 .content-card img {
     display: none;
+    width: auto;
+    height: 175px;
 }
 
 <?php foreach($rarity_names as $rarity){ ?>
