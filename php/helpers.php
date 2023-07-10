@@ -118,6 +118,9 @@ $gallery_famous = array(
     array('mint' => 293, 'rarity' => 'common', 'name' => 'David Trézéguet'),
     array('mint' => 294, 'rarity' => 'common', 'name' => 'Mauro Camoranesi'),
     array('mint' => 147, 'rarity' => 'rare',   'name' => 'Kylian Mbappé'),
+    array('mint' => 426, 'rarity' => 'rare',   'name' => 'Diego Maradona'),
+    array('mint' => 587, 'rarity' => 'rare',   'name' => 'Pierluigi Collina'),
+    array('mint' => 586, 'rarity' => 'rare',   'name' => 'Stephan El Shaarawy'),
     
     'Golf',
     array('mint' => 767, 'rarity' => 'common', 'name' => 'Tiger Woods'),
