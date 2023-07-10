@@ -5,7 +5,7 @@ $rarity_names = array('common', 'rare', 'epic', 'legendary');
 
 $traits = array('body', 'clothing', 'nose', 'mouth', 'facial_hair', 'hair', 'eyes');
 
-$stat_names = array('technique', 'endurance', 'speed', 'power', 'mental_strength');
+$stat_names = array('power', 'speed', 'endurance', 'technique', 'mental_strength');
 
 $colors = array(
     'common' => '#8f9099',
@@ -384,60 +384,76 @@ function generate_highlights($sportvatar)
         '0xc967ab07284b463f' => 'this website and Flov.dev'
     );
     
-    if(array_key_exists($sportvatar['minter_flow_address'], $noteworthy_addresses)){
+    if(array_key_exists($sportvatar['minter_flow_address'], $noteworthy_addresses))
+    {
         $highlights[] = 'Minted by the creator of ' . $noteworthy_addresses[ $sportvatar['minter_flow_address'] ];
     }
 
+    $max_stats = array();
+    $ability_word = 'ability';
     foreach($stat_names as $stat)
     {
         if($sportvatar['stat_'. $stat] == 10)
         {
-            $highlights[] = 'Maximum possible '. str_replace('_', ' ', $stat) .' stat';
+            $max_stats[] = str_replace('_', ' ', $stat);
         }
+    }
+    if(count($max_stats) > 0)
+    {
+        if(count($max_stats) > 1){ $ability_word = 'abilities'; }
+        $highlights[] = 'Maxed out '. $ability_word .': '. implode(', ', $max_stats);
     }
     
     // Meme mint numbers
     $meme_mints = array(69, 420, 8008, 6900, 4200, 1337, 690, 6900, 6969, 6942);
-    if(in_array($sportvatar['mint_number'], $meme_mints)){
+    if(in_array($sportvatar['mint_number'], $meme_mints))
+    {
         $highlights[] = 'Meme mint number';
     }
     
     // Milestone mint numbers
     $milestone_mints = array(100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000);
-    if(in_array($sportvatar['mint_number'], $milestone_mints)){
+    if(in_array($sportvatar['mint_number'], $milestone_mints))
+    {
         $highlights[] = 'Milestone mint number';
     }
     
     // latest
-    if($num_sportvatars == $sportvatar['mint_number']){
+    if($num_sportvatars == $sportvatar['mint_number'])
+    {
         $highlights[] = 'Newest mint';
     }
     
     // one digit mint
-    if(strlen($sportvatar['mint_number']) == 1){
+    if(strlen($sportvatar['mint_number']) == 1)
+    {
         $highlights[] = 'Single digit mint number';
     }
     
     // two digit mint
-    if(strlen($sportvatar['mint_number']) == 2){
+    if(strlen($sportvatar['mint_number']) == 2)
+    {
         $highlights[] = '2 digit mint number';
     }
     
     // repeating mint
     $repeater_mints = array(11,22,33,44,55,66,77,88,99,111,222,333,444,555,666,777,888,999,1111,2222,3333,4444,5555,6666,7777,8888,9999);
-    if(in_array($sportvatar['mint_number'], $repeater_mints)){
+    if(in_array($sportvatar['mint_number'], $repeater_mints))
+    {
         $highlights[] = 'Repeater mint number';
     }
     
     // consecutive mint
     $consecutive_mints = array(12,23,34,45,56,67,78,89,123,234,345,456,567,678,789,1234,2345,3456,4567,5678,6789);
-    if(in_array($sportvatar['mint_number'], $consecutive_mints)){
+    if(in_array($sportvatar['mint_number'], $consecutive_mints))
+    {
         $highlights[] = 'Consecutive count up mint number';
     }
     
     // reverse consecutive mint
     $reverse_consecutive_mints = array(21,32,43,54,65,76,87,98,321,432,543,654,765,876,987,4321,5432,6543,7654,8765,9876);
-    if(in_array($sportvatar['mint_number'], $reverse_consecutive_mints)){
+    if(in_array($sportvatar['mint_number'], $reverse_consecutive_mints))
+    {
         $highlights[] = 'Consecutive count down mint number';
     }
     
