@@ -445,7 +445,7 @@ function generate_highlights($sportvatar)
     {
         if($famous['mint'] == $sportvatar['mint_number'])
         {
-            $highlights[] = $famous['name'] .' from the <a href="/gallery-famous.php" class="text_link_bright">Famous Sportvatars gallery</a>';
+            $highlights[] = $famous['name'] .' from the <a href="/gallery-famous.php" class="text_link">Famous Sportvatars gallery</a>';
             break;
         }
     }
