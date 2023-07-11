@@ -67,3 +67,13 @@ ALTER TABLE `sportvatars`
   ADD KEY `trait_eyes_id_index` (`trait_eyes_id`),
   ADD KEY `sportbit_accessory_id_index` (`sportbit_accessory_id`);
 COMMIT;
+
+CREATE TABLE `collections` (
+  `owner_flow_address` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `packs` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `collections`
+  ADD KEY `owner_flow_address_index` (`owner_flow_address`),
+  ADD KEY `packs_index` (`packs`);
+COMMIT;
