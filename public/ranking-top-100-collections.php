@@ -42,11 +42,12 @@ img.sportvatar {
                 <th data-orderable="false">Owner</th>
                 <th data-orderable="false">.find<br>name</th>
                 <th>Score Total</th>
-                <th>Num.<br>Sportvatars</th>
-                <th>Num. Common<br>Sportvatars</th>
-                <th>Num. Rare<br>Sportvatars</th>
-                <th>Num. Epic<br>Sportvatars</th>
-                <th>Num. Legendary<br>Sportvatars</th>
+                <th>Sportvatars</th>
+                <th>Common<br>Sportvatars</th>
+                <th>Rare<br>Sportvatars</th>
+                <th>Epic<br>Sportvatars</th>
+                <th>Legendary<br>Sportvatars</th>
+                <th>Unopened<br>Packs</th>
                 <th data-orderable="false">View</th>
             </tr>
         </thead>
@@ -55,6 +56,7 @@ img.sportvatar {
     $rank = 1;
     foreach($sportvatar_collections as $collection)
     {
+        $unopened_packs = general_query("SELECT packs FROM collections WHERE owner_flow_address='". $collection['owner_flow_address'] ."';");
 ?>
             <tr>
                 <td><?= $rank; ?></td>
@@ -66,6 +68,7 @@ img.sportvatar {
                 <td><?= $collection['rare_count']; ?></td>
                 <td><?= $collection['epic_count']; ?></td>
                 <td><?= $collection['legendary_count']; ?></td>
+                <td><?= $unopened_packs[0]['packs']; ?></td>
                 <td><a href="https://sportvatar.com/collection/<?= $collection['owner_flow_address']; ?>" class="text_link_bright" target="_blank">Collection</a></td>
             </tr>
 <?php
