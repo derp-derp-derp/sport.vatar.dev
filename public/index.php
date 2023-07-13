@@ -291,7 +291,7 @@ h1 { color: <?= $rarity_color ?>; }
                         </p>
                         
                         <p class="desktop-only">
-                            <a href="sportvatar-deconstructor.php?mint=<?= $sportvatar_index['mint_number']; ?>" class="text_link">View in the <em>Deconstructor 5000</em>.</a>
+                            <a href="sportvatar-deconstructor.php?mint=<?= $sportvatar_index['mint_number']; ?>" class="text_link">View in <em>The Deconstructor 5000</em>.</a>
                         </p>
                     </td>
 <?php

@@ -8,7 +8,7 @@
     left: 50%;
     transform: translate(-50%, 0);
     height: 2024px;
-    width: 65%;
+    width: 100%;
 }
     
 img {
@@ -131,7 +131,7 @@ img {
 
 <?php
     subpage_heading(
-        '<em>Deconstructor 5000</em>&#160;(beta)',
+        '<em>The Deconstructor 5000</em>&#160;(beta)',
         'Drag the slider bar to see this Sportvatar\'s individual components.'
     );
     
@@ -166,6 +166,8 @@ img {
     <?php if($sportvatar['sportbit_accessory_id'] > 0){ ?>
     <div><img src="https://sportvatar.com/api/image/template/<?= $sportvatar['sportbit_accessory_id']; ?>"></div>
     <?php } ?>
+    
+    <div><img src="https://sportvatar.com/api/image/<?= $sportvatar['mint_number']; ?>"></div>
 
     <input type="range" min="0" max="10" value="0" class="sportvatar_slider" id="sportvatar_slider">
 </div>
@@ -178,43 +180,34 @@ function handleChange(e) {
     const imgs = document.querySelectorAll('#deconstructor img');
     const {value, max} = e.target;
     
-    // 0 body
-    // 1 clothing
-    // 2 mouth
-    // 3 facialHair
-    // 4 hair
-    // 5 eyes
-    // 6 nose
-    // 7 accessory
-    
     for (var i = 0, len = imgs.length; i < len; i++)
     {
-        if(i > 0) // don't move body
+        switch (i)
         {
-            switch (i)
-            {
-                case 1:
-                    imgs[i].style.left = `${((value*max)*(i+3))}px`;
-                    break;
-                case 2:
-                    imgs[i].style.left = `${((value*max)*(i+3))}px`;
-                    break;
-                case 3:
-                    imgs[i].style.left = `${((value*max)*(i+3))}px`;
-                    break;
-                case 4:
-                    imgs[i].style.left = `${((value*max)*(i+3.5))}px`;
-                    break;
-                case 5:
-                    imgs[i].style.left = `${((value*max)*(i+3))}px`;
-                    break;
-                case 6:
-                    imgs[i].style.left = `${((value*max)*(i+3.5))}px`;
-                    break;
-                case 7:
-                    imgs[i].style.left = `${((value*max)*(i+2))}px`;
-                    break;
-            }
+            case 0: // body
+                imgs[i].style.left = `${((value*max)*(i+5.5))}px`;
+                break;
+            case 1: // clothing
+                imgs[i].style.left = `${((value*max)*(i+9))}px`;
+                break;
+            case 2: // mouth
+                imgs[i].style.left = `${((value*max)*(i+10.5))}px`;
+                break;
+            case 3: // facial hair
+                imgs[i].style.left = `${((value*max)*(i+8))}px`;
+                break;
+            case 4: // hair
+                imgs[i].style.left = `${((value*max)*(i+9))}px`;
+                break;
+            case 5:  // eyes
+                imgs[i].style.left = `${((value*max)*(i+10))}px`;
+                break;
+            case 6: // nose
+                imgs[i].style.left = `${((value*max)*(i+7))}px`;
+                break;
+            case 7: // accessory
+                imgs[i].style.left = `${((value*max)*(i+9))}px`;
+                break;
         }
     }
 }
