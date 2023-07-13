@@ -57,6 +57,9 @@ $num_rare_sportvatars = get_num_sportvatars_in_db('rare');
 $num_epic_sportvatars = get_num_sportvatars_in_db('epic');
 $num_legendary_sportvatars = get_num_sportvatars_in_db('legendary');
 $sportvatars_last_updated_timestamp = get_sportvatars_last_updated_timestamp();
+$all_sportvatars_ranked_by_total_score = get_all_sportvatars_ranked_by_total_score();
+$all_sportvatars_ranked_by_trait_score = get_all_sportvatars_ranked_by_trait_score();
+$all_sportvatars_ranked_by_sportbit_score = get_all_sportvatars_ranked_by_sportbit_score();
 
 $gallery_famous = array(
     'American Football',
@@ -359,11 +362,62 @@ function get_template($template_id)
     }
 }
 
+function get_all_sportvatars_ranked_by_total_score(){
+    global $conn;
+
+    $result = $conn->query("SELECT * FROM sportvatars ORDER BY rarity_score_total DESC, mint_number ASC LIMIT 10000");
+        
+    $all_sportvatars_ranked_by_total_score = $result->fetch_all(MYSQLI_ASSOC);
+    $result->close();
+    
+    return $all_sportvatars_ranked_by_total_score;
+}
+
+function get_all_sportvatars_ranked_by_trait_score(){
+    global $conn;
+
+    $result = $conn->query("SELECT * FROM sportvatars ORDER BY rarity_score_traits DESC, mint_number ASC LIMIT 10000");
+        
+    $all_sportvatars_ranked_by_trait_score = $result->fetch_all(MYSQLI_ASSOC);
+    $result->close();
+    
+    return $all_sportvatars_ranked_by_trait_score;
+}
+
+function get_all_sportvatars_ranked_by_sportbit_score(){
+    global $conn;
+
+    $result = $conn->query("SELECT * FROM sportvatars ORDER BY rarity_score_sportbits DESC, mint_number ASC LIMIT 10000");
+        
+    $all_sportvatars_ranked_by_sportbit_score = $result->fetch_all(MYSQLI_ASSOC);
+    $result->close();
+    
+    return $all_sportvatars_ranked_by_sportbit_score;
+}
+
+function get_individual_overall_rank($mint_number, $all_sportvatars_ranked_by_total_score){
+    $rarity_rank = array_search($mint_number, array_column($all_sportvatars_ranked_by_total_score, 'mint_number'));
+    return $rarity_rank + 1;
+}
+
+function get_individual_trait_rank($mint_number, $all_sportvatars_ranked_by_trait_score){
+    $rarity_rank = array_search($mint_number, array_column($all_sportvatars_ranked_by_trait_score, 'mint_number'));
+    return $rarity_rank + 1;
+}
+
+function get_individual_sportbit_rank($mint_number, $all_sportvatars_ranked_by_sportbit_score){
+    $rarity_rank = array_search($mint_number, array_column($all_sportvatars_ranked_by_sportbit_score, 'mint_number'));
+    return $rarity_rank + 1;
+}
+
 function generate_highlights($sportvatar)
 {
     global $stat_names;
     global $num_sportvatars;
     global $gallery_famous;
+    global $all_sportvatars_ranked_by_total_score;
+    global $all_sportvatars_ranked_by_trait_score;
+    global $all_sportvatars_ranked_by_sportbit_score;
     
     $highlights = array();
     
@@ -467,6 +521,45 @@ function generate_highlights($sportvatar)
             $highlights[] = $famous['name'] .' from the <a href="/gallery-famous.php" class="text_link">Famous Sportvatars gallery</a>';
             break;
         }
+    }
+    
+    // top scores places to acknowledge
+    $places = 10;
+    
+    // overall top scores
+    $o = 1;
+    while($o <= $places)
+    {
+        if(get_individual_overall_rank($sportvatar['mint_number'], $all_sportvatars_ranked_by_total_score) == $o)
+        {
+            $highlights[] = '#'.$o.' top score overall';
+            break;
+        }
+        $o++;
+    }
+    
+    // traits top scores
+    $t = 1;
+    while($t <= $places)
+    {
+        if(get_individual_trait_rank($sportvatar['mint_number'], $all_sportvatars_ranked_by_trait_score) == $t)
+        {
+            $highlights[] = '#'.$t.' top traits score';
+            break;
+        }
+        $t++;
+    }
+    
+    // Sportbits top scores
+    $f = 1;
+    while($f <= $places)
+    {
+        if(get_individual_sportbit_rank($sportvatar['mint_number'], $all_sportvatars_ranked_by_sportbit_score) == $f)
+        {
+            $highlights[] = '#'.$f.' top Sportbits score';
+            break;
+        }
+        $f++;
     }
     
     return $highlights;
