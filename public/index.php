@@ -390,12 +390,12 @@ h1 { color: <?= $rarity_color ?>; }
                     <td><a class="main-navigation-card" href="ranking-top-100-sportvatars.php">Top 100 Sportvatars</a></td>
                     <td><a class="main-navigation-card" href="ranking-top-100-collections.php">Top 100 Collections</a></td>
                     <td><a class="main-navigation-card" href="sportbits.php">Sportvatars by Sportbit</a></td>
-                    <td><a class="main-navigation-card" href="gallery-famous.php">Famous Sportvatars</a></td>
-                    <td><a class="main-navigation-card" href="questions-answers.php">Questions &amp; Answers</a></td>
-                </tr>
-                <tr>
                     <td><a class="main-navigation-card" href="traits.php?view=least_used">50 Least Used Traits</a></td>
                     <td><a class="main-navigation-card" href="traits.php">50 Most Used Traits</a></td>
+                </tr>
+                <tr>
+                    <td><a class="main-navigation-card" href="gallery-famous.php">Famous Sportvatars</a></td>
+                    <td><a class="main-navigation-card" href="questions-answers.php">Questions &amp; Answers</a></td>
                     <td style="vertical-align: middle !important;">
                         <h2 style="padding: 25px 0 0 0; color: #ffffff;" class="mobile-only">- More fun coming soon! -</h2>
                         &#160;
