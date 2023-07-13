@@ -44,5 +44,5 @@ foreach($collectors as $collector){
 
 $conn->multi_query($packs_dynamic_inventory_sql);
 
-require_once(__DIR__.'/../close_connections.php');
+require_once(__DIR__.'/../close-connections.php');
 exit;

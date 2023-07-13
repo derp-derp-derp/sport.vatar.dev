@@ -33,5 +33,5 @@ $conn->multi_query($updates_queries);
 
 usleep(5000000);
 
-require_once(__DIR__.'/../close_connections.php');
-exec("php '". dirname(__FILE__) ."/4-regenerate_sportvatars_rarity_scores.php'");
+require_once(__DIR__.'/../close-connections.php');
+exec("php '". dirname(__FILE__) ."/4-regenerate-sportvatars-rarity-scores.php'");

@@ -42,5 +42,5 @@ require_once(__DIR__.'/../helpers.php');
         usleep(5000000);
     }
 
-require_once(__DIR__.'/../close_connections.php');
+require_once(__DIR__.'/../close-connections.php');
 exit;
