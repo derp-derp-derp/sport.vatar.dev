@@ -11,7 +11,7 @@ if($sportvatar_index_found)
 
 <style type="text/css">
 img.sportvatar {
-    width: 90%;
+    width: 80%;
     height: auto;
     margin: 0 auto 10px auto;
 }
@@ -20,7 +20,7 @@ div.highlights_container {
     border: 1px dashed <?= $rarity_color; ?>;
     margin: 0 auto 20px auto;   
     padding: 20px;
-    width: calc(90% - 38px);
+    width: calc(80% - 38px);
     height: auto;
     line-height: 28px;
 }
@@ -93,7 +93,7 @@ h1 { color: <?= $rarity_color ?>; }
 }
 
 #index-stats-table tr td.stats-span {
-    font-size: 225%;
+    font-size: 300%;
     text-align: center;
 }
 
@@ -164,6 +164,7 @@ h1 { color: <?= $rarity_color ?>; }
             if($sportvatar_index_found){
                 $highlights = generate_highlights($sportvatar_index);
                 $ability = (($sportvatar_index['ability']/2)/5)+0;
+                $ability = sprintf("%0.1f", $ability);
             ?>
             
             <table class="col-3 faux-responsive-table">
@@ -183,7 +184,7 @@ h1 { color: <?= $rarity_color ?>; }
                         
                         <?php } // end foreach($highlights as $highlight) ?>
                     </td>
-                    <td>
+                    <td style="font-size: 125%;">
                         <h2 class="sportvatar">RARITY SCORES</h2>
                         
                         <table id="index-stats-table" class="no-collapse">
@@ -226,7 +227,7 @@ h1 { color: <?= $rarity_color ?>; }
                                 <td colspan="2" class="stats-span">
                                     TOTAL &#160;
                                     <span style="color: <?= $rarity_color; ?>;">
-                                        <?= $sportvatar_index['rarity_score_total']+0; ?>
+                                        <?= sprintf("%0.1f", $sportvatar_index['rarity_score_total']+0); ?>
                                     </span>
                                 </td>
                             </tr>
@@ -310,7 +311,7 @@ h1 { color: <?= $rarity_color ?>; }
     }
     //echo highlight_string(print_r($mint_templates,true),true);
 ?>
-                    <td>
+                    <td style="font-size: 125%;">
                         <br class="mobile-only">
                         <h2 class="sportvatar">
                             TRAITS&#160;&#160;
@@ -390,11 +391,11 @@ h1 { color: <?= $rarity_color ?>; }
                     <td><a class="main-navigation-card" href="ranking-top-100-collections.php">Top 100 Collections</a></td>
                     <td><a class="main-navigation-card" href="sportbits.php">Sportvatars by Sportbit</a></td>
                     <td><a class="main-navigation-card" href="gallery-famous.php">Famous Sportvatars</a></td>
-                    <td><a class="main-navigation-card" href="#">Your Sportvatar (Log In)</a></td>
+                    <td><a class="main-navigation-card" href="questions-answers.php">Questions &amp; Answers</a></td>
                 </tr>
                 <tr>
-                    <td><a class="main-navigation-card" href="#">Least Used Traits</a></td>
-                    <td><a class="main-navigation-card" href="#">Most Used Traits</a></td>
+                    <td><a class="main-navigation-card" href="traits.php?view=least_used">50 Least Used Traits</a></td>
+                    <td><a class="main-navigation-card" href="traits.php">50 Most Used Traits</a></td>
                     <td style="vertical-align: middle !important;">
                         <h2 style="padding: 25px 0 0 0; color: #ffffff;" class="mobile-only">- More fun coming soon! -</h2>
                         &#160;
