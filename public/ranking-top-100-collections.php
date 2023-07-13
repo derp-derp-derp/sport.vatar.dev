@@ -56,19 +56,33 @@ img.sportvatar {
     $rank = 1;
     foreach($sportvatar_collections as $collection)
     {
-        $unopened_packs = general_query("SELECT packs FROM collections WHERE owner_flow_address='". $collection['owner_flow_address'] ."';");
+        $find_name = '-';
+        $unopened_packs = 0;
+        
+        if($collection_details = general_query("SELECT * FROM collections WHERE owner_flow_address='". $collection['owner_flow_address'] ."';"))
+        {
+            if($collection_details[0]['find_name'] != '')
+            {
+                $find_name = '<a href="https://find.xyz/'. $collection_details[0]['find_name'] .'" class="text_link_bright" target="_blank">'. $collection_details[0]['find_name'] .'</a>';
+            }
+            
+            if($collection_details[0]['packs'] > 0)
+            {
+                $unopened_packs = $collection_details[0]['packs'];
+            }
+        } // end if($collection_details = general_query("SELECT * FROM collections...
 ?>
             <tr>
                 <td><?= $rank; ?></td>
                 <td class="fixed-width-font"><?= $collection['owner_flow_address']; ?></td>
-                <td class="fixed-width-font find_name_<?= $collection['owner_flow_address']; ?>"><a href="javascript:void(0)" class="get_find_name text_link" data-flow-address="<?= $collection['owner_flow_address']; ?>">Lookup</a></td>
+                <td class="fixed-width-font"><?= $find_name; ?></td>
                 <td><?= $collection['total_score']; ?></td>
                 <td><?= $collection['num_sportvatars']; ?></td>
                 <td><?= $collection['common_count']; ?></td>
                 <td><?= $collection['rare_count']; ?></td>
                 <td><?= $collection['epic_count']; ?></td>
                 <td><?= $collection['legendary_count']; ?></td>
-                <td><?= $unopened_packs[0]['packs']; ?></td>
+                <td><?= $unopened_packs; ?></td>
                 <td><a href="https://sportvatar.com/collection/<?= $collection['owner_flow_address']; ?>" class="text_link_bright" target="_blank">Collection</a></td>
             </tr>
 <?php
@@ -79,7 +93,6 @@ img.sportvatar {
         </table>
 
 <script src="./assets/js/data-table-standard-config.js"></script>
-<script src="./assets/js/find-reverse-lookup-ajax.js"></script>
 <script>
 $(document).ready(function(){
     $('#data-table').DataTable( data_table_conf );

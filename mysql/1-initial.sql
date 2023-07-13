@@ -70,10 +70,12 @@ COMMIT;
 
 CREATE TABLE `collections` (
   `owner_flow_address` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `packs` int(11) NOT NULL
+  `packs` int(11) NOT NULL,
+  `find_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 ALTER TABLE `collections`
   ADD KEY `owner_flow_address_index` (`owner_flow_address`),
-  ADD KEY `packs_index` (`packs`);
+  ADD KEY `packs_index` (`packs`),
+  ADD KEY `find_name_index` (`find_name`);
 COMMIT;
