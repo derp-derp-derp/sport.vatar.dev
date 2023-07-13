@@ -240,6 +240,8 @@ h3.sportvatar {
 @media screen and (max-width: 800px) {
     
     .mobile-only { display: block; }
+    
+    .desktop-only { display: none; }
 
     .faux-responsive-table td { 
         display: block;

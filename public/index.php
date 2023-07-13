@@ -289,6 +289,10 @@ h1 { color: <?= $rarity_color ?>; }
                         <p>
                             <a href="https://sportvatar.com/builder#<?= $combination_string; ?>" target="_blank" class="text_link">View in official Sportvatar.com builder.</a>
                         </p>
+                        
+                        <p class="desktop-only">
+                            <a href="sportvatar-deconstructor.php?mint=<?= $sportvatar_index['mint_number']; ?>" class="text_link">View in the <em>Deconstructor 5000</em>.</a>
+                        </p>
                     </td>
 <?php
     $all_templates_in_mint = explode(',', $sportvatar_index['templates_data']);
