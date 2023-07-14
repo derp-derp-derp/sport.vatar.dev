@@ -63,16 +63,17 @@
 
         <div class="answer noselect">
             
-            <p>Credit goes to <a href="https://raritytools.medium.com/ranking-rarity-understanding-rarity-calculation-methods-86ceaeb9b98c" target="_blank" class="text_link">Rarity Tools</a> for their "Rarity Score" method: <em>The total Rarity Score for an NFT is the sum of the Rarity Score of all of its trait values.</em></p>
-            
-            <p style="font-weight:bold;">Formula for traits:</p>
+            <p style="font-weight: bold;">Traits:</p>
             <pre>( .01 / ( [number_of_sportvatars_with_same_trait] / [number_of_sportvatars] ) )</pre>
             
-            <p style="font-weight:bold;">Formula for Sportbits:</p>
+            <p style="font-weight: bold;">Sportbits:</p>
             <pre>( .01 / ( [number_of_sportvatars_with_same_sportbit_equipped] / [number_of_sportvatars] ) )</pre>
             
-            <p style="font-weight:bold;">Formula for total rarity score:</p>
+            <p style="font-weight: bold;">Total rarity score:</p>
             <pre>( [traits_score] + [sportbits_score] + [native_sportvatar_ability_average] )</pre>
+            
+            <br>
+            <p style="font-size: 75%;">Scoring method was heavily influenced by this great write up by <a href="https://raritytools.medium.com/ranking-rarity-understanding-rarity-calculation-methods-86ceaeb9b98c" target="_blank" class="text_link_bright">Rarity Tools</a>.</p>
         </div>
     </div>
 </div>
