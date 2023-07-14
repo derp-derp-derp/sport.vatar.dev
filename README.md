@@ -2,8 +2,6 @@
 
 A [https://sportvatar.com](Sportvatar) fan site started during [Flow Hackathon Season 2 of 2023](https://flow-hackathon-s2.devfolio.co/) to enhance and further gamify the user experience for Sportvatar users and collectors.
 
-Try it out at: https://sport.vatar.dev
-
 ***
 
 ## Primary features
@@ -16,6 +14,8 @@ Try it out at: https://sport.vatar.dev
 - Trait and Sportbit usage statistics
 - Gallery of famous look-a-like Sportvatars
 - Scheduled scripts to pull data from the Sportvatar API and Flow Blockchain
+
+See all of this and more at: https://sport.vatar.dev
 
 ***
 
