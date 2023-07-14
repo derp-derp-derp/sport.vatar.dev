@@ -8,3 +8,7 @@ let data_table_conf = {
         {"className": "dt-center", "targets": "_all"}
     ]
 };
+
+$(document).ready(function(){
+    $("tr:visible:even").css("background-color", "#141d1e");
+});

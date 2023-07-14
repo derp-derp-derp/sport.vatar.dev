@@ -24,7 +24,7 @@ p {
     margin-right: 0;
 }
 
-th { background-color: #0e1617; }
+th { background-color: #000000; }
 
 /* Hide number input stepper Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -46,11 +46,6 @@ input[type=number] {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
-}
-
-div.dataTables_wrapper {
-    width: 98%;
-    margin: 0 auto;
 }
 
 h1,
