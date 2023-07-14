@@ -8,12 +8,17 @@ A [https://sportvatar.com](Sportvatar) fan site started during [Flow Hackathon S
 
 - Extended rarity scoring system for traits and Sportbits
 - Sportvatar profiles w/ metadata, score breakdown, and dynamic highlights
-- Top 100 Sportvatars leaderboard
-- Top 100 Collections leaderboard
+- Top 100 Sportvatars leaderboards
+- Top 100 Collections leaderboards
+    - Separate top 100 leaderboards for both total scores and native ability scores
 - View Sportvatars by equipped Sportbit
 - Trait and Sportbit usage statistics
 - Gallery of famous look-a-like Sportvatars
 - Scheduled scripts to pull data from the Sportvatar API and Flow Blockchain
+    - Sportvatar templates usage stats
+    - Metadata for new and recently updated Sportvatars
+    - Unopened Sportvatar pack inventory
+    - Collector's [.find names](https://find.xyz)
 
 See all of this and more at: https://sport.vatar.dev
 
