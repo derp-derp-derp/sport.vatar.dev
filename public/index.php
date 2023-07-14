@@ -202,7 +202,7 @@ h1 { color: <?= $rarity_color ?>; }
                                     Speed: <?= $sportvatar_index['stat_speed']/2; ?><br>
                                     Endurance: <?= $sportvatar_index['stat_endurance']/2; ?><br>
                                     Technique: <?= $sportvatar_index['stat_technique']/2; ?><br>
-                                    Mental Strength: <?= $sportvatar_index['stat_mental_strength']/2; ?>
+                                    Mental: <?= $sportvatar_index['stat_mental_strength']/2; ?>
                                 </td>
                             </tr>
                             <tr>
@@ -263,17 +263,17 @@ h1 { color: <?= $rarity_color ?>; }
                         
                         <br>
                         
-                        <p>
+                        <p style="font-size: 90%;">
                             <a href="https://sportvatar.com/collection/<?= $sportvatar_index['owner_flow_address']; ?>" class="text_link" target="_blank">View this Sportvatar owner's collection.</a>
                         </p>
                         
                         <?php if($sportvatar_index['owner_flow_address'] !== $sportvatar_index['minter_flow_address']){ ?>
-                        <p>
+                        <p style="font-size: 90%;">
                             <a href="https://sportvatar.com/collection/<?= $sportvatar_index['minter_flow_address']; ?>" class="text_link" target="_blank">View the original minter's collection.</a>
                         </p>
                         <?php } // end if($sportvatar_index['owner_flow_address'] !=== $sportvatar_index['minter_flow_address']) ?>
                         
-                        <p>
+                        <p style="font-size: 90%;">
                             <a href="https://sportvatar.com/sportvatars/<?= $sportvatar_index['mint_number'] .'/'. $sportvatar_index['owner_flow_address']; ?>" class="text_link" target="_blank">View official Sportvatar.com detail page.</a>
                         </p>
                         
@@ -286,11 +286,11 @@ h1 { color: <?= $rarity_color ?>; }
                             }
                         ?>
                         
-                        <p>
+                        <p style="font-size: 90%;">
                             <a href="https://sportvatar.com/builder#<?= $combination_string; ?>" target="_blank" class="text_link">View in official Sportvatar.com builder.</a>
                         </p>
                         
-                        <p class="desktop-only">
+                        <p class="desktop-only" style="font-size: 90%;">
                             <a href="sportvatar-deconstructor.php?mint=<?= $sportvatar_index['mint_number']; ?>" class="text_link">View in <em>The Deconstructor 5000</em>.</a>
                         </p>
                     </td>

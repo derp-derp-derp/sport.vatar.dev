@@ -270,4 +270,8 @@ h3.sportvatar {
     }
     
     .dataTables_empty { text-align: left !important; }
+    
+    h2.sportvatar {
+        font-size: 210%;
+    }
 }
