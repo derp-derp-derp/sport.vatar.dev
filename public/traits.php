@@ -39,6 +39,7 @@ $traits = general_query($sql);
     text-decoration: none;
     color: #ddfc60;
     font-weight: bold;
+    cursor: default;
 }
 
 .content-card img {
