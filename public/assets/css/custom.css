@@ -270,3 +270,19 @@ h3.sportvatar {
         font-size: 210%;
     }
 }
+
+/*
+lock to portrait orientation
+https://css-tricks.com/snippets/css/orientation-lock/
+*/
+@media screen and (min-width: 320px) and (max-width: 800px) and (orientation: landscape) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
