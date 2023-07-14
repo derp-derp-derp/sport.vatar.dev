@@ -128,9 +128,11 @@
 </div>
 
 <script>
+$(document).ready(function(){
     $('.question').on( "click", function(){
         $('.answer').hide();
         $(this).find(".answer").show();
     });
+});
 </script>
 <?php require_once 'template/footer.php'; ?>

@@ -104,6 +104,7 @@
 </table>
 
 <script>
+$(document).ready(function(){
     $('.content-card').on( "mouseenter", function(){
         $(this).find("img").show();
         $(this).find("span").hide();
@@ -111,5 +112,6 @@
         $(this).find("img").hide();
         $(this).find("span").show();
     });
+});
 </script>
 <?php require_once 'template/footer.php'; ?>

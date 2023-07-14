@@ -417,9 +417,11 @@ h1 { color: <?= $rarity_color ?>; }
     </tr>
     </table>
 <script>
+$(document).ready(function(){
     $('#abilities_detail_expand').on('click', function(e){
         e.preventDefault();
         $('#abilities_detail').toggle();
     });
+});
 </script>
 <?php require_once 'template/footer.php'; ?>

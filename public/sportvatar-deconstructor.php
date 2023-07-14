@@ -173,43 +173,45 @@ img {
 </div>
 
 <script>
-const sportvatar_slider = document.getElementById('sportvatar_slider');
-sportvatar_slider.addEventListener('input', handleChange);
-
-function handleChange(e) {
-    const imgs = document.querySelectorAll('#deconstructor img');
-    const {value, max} = e.target;
+$(document).ready(function(){
+    const sportvatar_slider = document.getElementById('sportvatar_slider');
+    sportvatar_slider.addEventListener('input', handleChange);
     
-    for (var i = 0, len = imgs.length; i < len; i++)
-    {
-        switch (i)
+    function handleChange(e) {
+        const imgs = document.querySelectorAll('#deconstructor div img');
+        const {value, max} = e.target;
+        
+        for (var i = 0, len = imgs.length; i < len; i++)
         {
-            case 1: // clothing
-                imgs[i].style.left = `${((value*max)*(i+4))}px`;
-                break;
-            case 2: // mouth
-                imgs[i].style.left = `${((value*max)*(i+4.5))}px`;
-                break;
-            case 3: // facial hair
-                imgs[i].style.left = `${((value*max)*(i+3.5))}px`;
-                break;
-            case 4: // hair
-                imgs[i].style.left = `${((value*max)*(i+5.5))}px`;
-                break;
-            case 5: // eyes
-                imgs[i].style.left = `${((value*max)*(i+6.5))}px`;
-                break;
-            case 6:  // nose
-                imgs[i].style.left = `${((value*max)*(i+2.5))}px`;
-                break;
+            switch (i)
+            {
+                case 1: // clothing
+                    imgs[i].style.left = `${((value*max)*(i+4))}px`;
+                    break;
+                case 2: // mouth
+                    imgs[i].style.left = `${((value*max)*(i+4.5))}px`;
+                    break;
+                case 3: // facial hair
+                    imgs[i].style.left = `${((value*max)*(i+3.5))}px`;
+                    break;
+                case 4: // hair
+                    imgs[i].style.left = `${((value*max)*(i+5.5))}px`;
+                    break;
+                case 5: // eyes
+                    imgs[i].style.left = `${((value*max)*(i+6.5))}px`;
+                    break;
+                case 6:  // nose
+                    imgs[i].style.left = `${((value*max)*(i+2.5))}px`;
+                    break;
+            }
+            
+            // sportbit accessory (optional)
+            document.getElementById('accessory_sportbit').style.left = `${((value*max)*(i+3.5))}px`;
+            
+            // full sportvatar image
+            document.getElementById('full_sportvatar_image').style.left = `${((value*max)*(i+9))}px`;
         }
-        
-        // sportbit accessory (optional)
-        document.getElementById('accessory_sportbit').style.left = `${((value*max)*(i+3.5))}px`;
-        
-        // full sportvatar image
-        document.getElementById('full_sportvatar_image').style.left = `${((value*max)*(i+9))}px`;
     }
-}
+});
 </script>
 <?php require_once 'template/footer.php'; ?>

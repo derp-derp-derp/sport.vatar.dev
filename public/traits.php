@@ -121,6 +121,7 @@ $traits = general_query($sql);
 </table>
 
 <script>
+$(document).ready(function(){
     $('.content-card').on( "mouseenter", function(){
         $(this).find("img").show();
         $(this).find("span").hide();
@@ -128,5 +129,6 @@ $traits = general_query($sql);
         $(this).find("img").hide();
         $(this).find("span").show();
     });
+});
 </script>
 <?php require_once 'template/footer.php'; ?>
