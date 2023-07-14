@@ -15,6 +15,7 @@ Try it out at: https://sport.vatar.dev
 - View Sportvatars by equipped Sportbit
 - Trait and Sportbit usage statistics
 - Gallery of famous look-a-like Sportvatars
+- Scheduled scripts to pull data from the Sportvatar API and Flow Blockchain
 
 ***
 
