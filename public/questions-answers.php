@@ -64,13 +64,13 @@
         <div class="answer noselect">
             
             <p style="font-weight: bold;">Traits:</p>
-            <pre>( .01 / ( [number_of_sportvatars_with_same_trait] / [number_of_sportvatars] ) )</pre>
+            <span class="fixed-width-font">( .01 / ( [number_of_sportvatars_with_same_trait] / [number_of_sportvatars] ) )</span>
             
             <p style="font-weight: bold;">Sportbits:</p>
-            <pre>( .01 / ( [number_of_sportvatars_with_same_sportbit_equipped] / [number_of_sportvatars] ) )</pre>
+            <span class="fixed-width-font">( .01 / ( [number_of_sportvatars_with_same_sportbit_equipped] / [number_of_sportvatars] ) )</span>
             
             <p style="font-weight: bold;">Total rarity score:</p>
-            <pre>( [traits_score] + [sportbits_score] + [native_sportvatar_ability_average] )</pre>
+            <span class="fixed-width-font">( [traits_score] + [sportbits_score] + [native_sportvatar_ability_average] )</span>
             
             <br>
             <p style="font-size: 75%;">Scoring method was heavily influenced by this great write up by <a href="https://raritytools.medium.com/ranking-rarity-understanding-rarity-calculation-methods-86ceaeb9b98c" target="_blank" class="text_link_bright">Rarity Tools</a>.</p>
