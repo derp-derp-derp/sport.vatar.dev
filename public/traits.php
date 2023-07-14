@@ -121,15 +121,5 @@ $traits = general_query($sql);
 ?>
 </table>
 
-<script>
-$(document).ready(function(){
-    $('.content-card').on( "mouseenter", function(){
-        $(this).find("img").show();
-        $(this).find("span").hide();
-    }).on( "mouseleave", function(){
-        $(this).find("img").hide();
-        $(this).find("span").show();
-    });
-});
-</script>
+<script src="./assets/js/card-hover.js"></script>
 <?php require_once 'template/footer.php'; ?>
