@@ -13,15 +13,15 @@
     
 img {
     position: absolute;
-    top: 0px;
+    top: 30px;
     left: 0px;
-    height: 700px;
+    height: 650px;
     width: auto;
 }
 
 #sportvatar_slider {
     position: absolute;
-    top: 750px;
+    top: 0;
     left: 50%;
     transform: translate(-50%, 0);
     width: 50%;
@@ -205,8 +205,10 @@ $(document).ready(function(){
                     break;
             }
             
+            <?php if($sportvatar['sportbit_accessory_id'] > 0){ ?>
             // sportbit accessory (optional)
             document.getElementById('accessory_sportbit').style.left = `${((value*max)*(i+3.5))}px`;
+            <?php } ?>
             
             // full sportvatar image
             document.getElementById('full_sportvatar_image').style.left = `${((value*max)*(i+9))}px`;
