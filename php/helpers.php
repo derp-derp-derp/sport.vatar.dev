@@ -420,7 +420,7 @@ function generate_highlights($sportvatar)
     {
         if($sportvatar['stat_'. $stat] == 10)
         {
-            $max_stats[] = str_replace('_', ' ', $stat);
+            $max_stats[] = str_replace('_strength', '', $stat);
         }
     }
     if(count($max_stats) > 0)
