@@ -11,6 +11,7 @@ A [https://sportvatar.com](Sportvatar) fan site started during [Flow Hackathon S
 - Top 100 Sportvatars leaderboards
 - Top 100 Collections leaderboards
     - Separate top 100 leaderboards for both total scores and native ability scores
+- Collection view by Flow address
 - View Sportvatars by equipped Sportbit
 - Trait and Sportbit usage statistics
 - Gallery of famous look-a-like Sportvatars
