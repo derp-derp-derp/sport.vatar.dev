@@ -164,10 +164,10 @@ img {
     <div><img src="https://sportvatar.com/api/image/template/<?= $sportvatar['trait_nose_id']; ?>"></div>
     
     <?php if($sportvatar['sportbit_accessory_id'] > 0){ ?>
-    <div><img src="https://sportvatar.com/api/image/template/<?= $sportvatar['sportbit_accessory_id']; ?>"></div>
+    <div><img id="accessory_sportbit" src="https://sportvatar.com/api/image/template/<?= $sportvatar['sportbit_accessory_id']; ?>"></div>
     <?php } ?>
     
-    <div><img src="https://sportvatar.com/api/image/<?= $sportvatar['mint_number']; ?>"></div>
+    <div><img id="full_sportvatar_image" src="https://sportvatar.com/api/image/<?= $sportvatar['mint_number']; ?>"></div>
 
     <input type="range" min="0" max="10" value="0" class="sportvatar_slider" id="sportvatar_slider">
 </div>
@@ -184,31 +184,31 @@ function handleChange(e) {
     {
         switch (i)
         {
-            case 0: // body
-                imgs[i].style.left = `${((value*max)*(i+5.5))}px`;
-                break;
             case 1: // clothing
-                imgs[i].style.left = `${((value*max)*(i+9))}px`;
+                imgs[i].style.left = `${((value*max)*(i+4))}px`;
                 break;
             case 2: // mouth
-                imgs[i].style.left = `${((value*max)*(i+10.5))}px`;
+                imgs[i].style.left = `${((value*max)*(i+4.5))}px`;
                 break;
             case 3: // facial hair
-                imgs[i].style.left = `${((value*max)*(i+8))}px`;
+                imgs[i].style.left = `${((value*max)*(i+3.5))}px`;
                 break;
             case 4: // hair
-                imgs[i].style.left = `${((value*max)*(i+9))}px`;
+                imgs[i].style.left = `${((value*max)*(i+5.5))}px`;
                 break;
-            case 5:  // eyes
-                imgs[i].style.left = `${((value*max)*(i+10))}px`;
+            case 5: // eyes
+                imgs[i].style.left = `${((value*max)*(i+6.5))}px`;
                 break;
-            case 6: // nose
-                imgs[i].style.left = `${((value*max)*(i+7))}px`;
-                break;
-            case 7: // accessory
-                imgs[i].style.left = `${((value*max)*(i+9))}px`;
+            case 6:  // nose
+                imgs[i].style.left = `${((value*max)*(i+2.5))}px`;
                 break;
         }
+        
+        // sportbit accessory (optional)
+        document.getElementById('accessory_sportbit').style.left = `${((value*max)*(i+3.5))}px`;
+        
+        // full sportvatar image
+        document.getElementById('full_sportvatar_image').style.left = `${((value*max)*(i+9))}px`;
     }
 }
 </script>
