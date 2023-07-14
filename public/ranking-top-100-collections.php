@@ -40,7 +40,6 @@ img.sportvatar {
             <tr>
                 <th>Rank</th>
                 <th data-orderable="false">Owner</th>
-                <th data-orderable="false">.find<br>name</th>
                 <th>Score Total</th>
                 <th>Sportvatars</th>
                 <th>Common<br>Sportvatars</th>
@@ -48,6 +47,7 @@ img.sportvatar {
                 <th>Epic<br>Sportvatars</th>
                 <th>Legendary<br>Sportvatars</th>
                 <th>Unopened<br>Packs</th>
+                <th data-orderable="false">.find</th>
                 <th data-orderable="false">View</th>
             </tr>
         </thead>
@@ -75,7 +75,6 @@ img.sportvatar {
             <tr>
                 <td><?= $rank; ?></td>
                 <td class="fixed-width-font"><?= $collection['owner_flow_address']; ?></td>
-                <td class="fixed-width-font"><?= $find_name; ?></td>
                 <td><?= $collection['total_score']; ?></td>
                 <td><?= $collection['num_sportvatars']; ?></td>
                 <td><?= $collection['common_count']; ?></td>
@@ -83,6 +82,7 @@ img.sportvatar {
                 <td><?= $collection['epic_count']; ?></td>
                 <td><?= $collection['legendary_count']; ?></td>
                 <td><?= $unopened_packs; ?></td>
+                <td class="fixed-width-font"><?= $find_name; ?></td>
                 <td><a href="https://sportvatar.com/collection/<?= $collection['owner_flow_address']; ?>" class="text_link_bright" target="_blank">Collection</a></td>
             </tr>
 <?php
