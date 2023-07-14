@@ -217,7 +217,8 @@ function general_query($sql_statement, $return_type = MYSQLI_ASSOC)
 
 function is_valid_flow_address($flow_address)
 {    
-    if(preg_match('/^0x[a-fA-F0-9]{16}$/', $flow_address) == 1){
+    if(preg_match('/^0x[a-fA-F0-9]{16}$/', $flow_address) == 1)
+    {
         return true;
     }
     return false;

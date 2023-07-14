@@ -83,7 +83,7 @@ img.sportvatar {
                 <td><?= $collection['legendary_count']; ?></td>
                 <td><?= $unopened_packs; ?></td>
                 <td class="fixed-width-font"><?= $find_name; ?></td>
-                <td><a href="https://sportvatar.com/collection/<?= $collection['owner_flow_address']; ?>" class="text_link_bright" target="_blank">Collection</a></td>
+                <td><a href="collection-list-sportvatars.php?flow_address=<?= $collection['owner_flow_address']; ?>" class="text_link_bright" target="_blank">Collection</a></td>
             </tr>
 <?php
         $rank++;
