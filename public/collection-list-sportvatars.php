@@ -34,7 +34,7 @@ img.sportvatar {
     
     subpage_heading(
         'Sportvatar Collection <br class="mobile-only"><span class="fixed-width-font">'. $owner_flow_address .'</span>',
-        'Overall rank is out of '. $num_sportvatars .' Sportvatars and includes native abilities scores + custom trait and Sportbit rarity scoring.'
+        'Total score includes native abilities scores + custom trait and Sportbit rarity scoring.'
     );
 ?>
 
