@@ -6,9 +6,13 @@ td {
     text-align: center;
     padding: 10px;
     font-size: 115%;
+    width: 33.33%;
 }
 
-    td.section_head { font-size: 150%; }
+    td.section_head {
+        font-size: 150%;
+        width: 100%;
+    }
     
     td span {
         font-size: 75%;
