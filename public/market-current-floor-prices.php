@@ -12,6 +12,8 @@ td {
     td.section_head {
         font-size: 150%;
         width: 100%;
+        background-color: #000000;
+        font-weight: bold;
     }
     
     td span {
