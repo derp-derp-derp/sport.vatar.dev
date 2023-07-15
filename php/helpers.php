@@ -3,6 +3,8 @@ require_once('config.php');
 
 $rarity_names = array('common', 'rare', 'epic', 'legendary');
 
+$entity_names = array('sport_flame', 'sportvatar', 'sportbit');
+
 $traits = array('body', 'clothing', 'nose', 'mouth', 'facial_hair', 'hair', 'eyes');
 
 $stat_names = array('power', 'speed', 'endurance', 'technique', 'mental_strength');
@@ -222,6 +224,107 @@ function is_valid_flow_address($flow_address)
         return true;
     }
     return false;
+}
+
+function search_marketplace($args)
+{
+    if(!array_key_exists('nosvg', $args))
+    {
+        $args['nosvg'] = 1;
+    }
+    
+    $json_url = "https://sportvatar.com/api/marketplace/search";
+    $json = curl_request_contents($json_url, 'post', $args);
+
+    return json_decode($json, true);
+}
+
+function floor_depth($prices_array)
+{
+    $depth = 0;
+
+    foreach($prices_array['data'] as $floor_item)
+    {
+        if($prices_array['data'][0]['price'] === $floor_item['price'])
+        {
+            $depth++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    
+    return $depth;
+}
+
+function get_floor_prices()
+{
+    global $conn;
+    $prices = array();
+    $depths = array();
+    
+    // Sport Flames
+    
+    $sport_flame_common_search = search_marketplace(array('templateid' => '1', 'sortby' => 'pricelow'));
+    $prices['sport_flame_common'] = $sport_flame_common_search['data'][0]['price'];
+    $depths['sport_flame_common'] = floor_depth($sport_flame_common_search);
+    
+    $sport_flame_rare_search = search_marketplace(array('templateid' => '3', 'sortby' => 'pricelow'));
+    $prices['sport_flame_rare'] = $sport_flame_rare_search['data'][0]['price'];
+    $depths['sport_flame_rare'] = floor_depth($sport_flame_rare_search);
+    
+    $sport_flame_epic_search = search_marketplace(array('templateid' => '4', 'sortby' => 'pricelow'));
+    $prices['sport_flame_epic'] = $sport_flame_epic_search['data'][0]['price'];
+    $depths['sport_flame_epic'] = floor_depth($sport_flame_epic_search);
+    
+    $sport_flame_legendary_search = search_marketplace(array('templateid' => '2', 'sortby' => 'pricelow'));
+    $prices['sport_flame_legendary'] = ($sport_flame_legendary_search['data'][0]['price'] > 0) ? $sport_flame_legendary_search['data'][0]['price'] : 0;
+    $depths['sport_flame_legendary'] = floor_depth($sport_flame_legendary_search);
+    
+    // Sportvatars
+    
+    $sportvatar_common_search = search_marketplace(array('templatecat' => 'sportvatar', 'sortby' => 'pricelow', 'rarity' => 'common'));
+    $prices['sportvatar_common'] = $sportvatar_common_search['data'][0]['price'];
+    $depths['sportvatar_common'] = floor_depth($sportvatar_common_search);
+    
+    $sportvatar_rare_search = search_marketplace(array('templatecat' => 'sportvatar', 'sortby' => 'pricelow', 'rarity' => 'rare'));
+    $prices['sportvatar_rare'] = $sportvatar_rare_search['data'][0]['price'];
+    $depths['sportvatar_rare'] = floor_depth($sportvatar_rare_search);
+    
+    $sportvatar_epic_search = search_marketplace(array('templatecat' => 'sportvatar', 'sortby' => 'pricelow', 'rarity' => 'epic'));
+    $prices['sportvatar_epic'] = $sportvatar_epic_search['data'][0]['price'];
+    $depths['sportvatar_epic'] = floor_depth($sportvatar_epic_search);
+    
+    $sportvatar_legendary_search = search_marketplace(array('templatecat' => 'sportvatar', 'sortby' => 'pricelow', 'rarity' => 'legendary'));
+    $prices['sportvatar_legendary'] = ($sportvatar_legendary_search['data'][0]['price'] > 0) ? $sportvatar_legendary_search['data'][0]['price'] : 0;
+    $depths['sportvatar_legendary'] = floor_depth($sportvatar_legendary_search);
+    
+    // Sportbits
+    
+    $sportbit_common_search = search_marketplace(array('templatecat' => 'sportbit', 'sortby' => 'pricelow', 'rarity' => 'common'));
+    $prices['sportbit_common'] = $sportbit_common_search['data'][0]['price'];
+    $depths['sportbit_common'] = floor_depth($sportbit_common_search);
+    
+    $sportbit_rare_search = search_marketplace(array('templatecat' => 'sportbit', 'sortby' => 'pricelow', 'rarity' => 'rare'));
+    $prices['sportbit_rare'] = $sportbit_rare_search['data'][0]['price'];
+    $depths['sportbit_rare'] = floor_depth($sportbit_rare_search);
+    
+    $sportbit_epic_search = search_marketplace(array('templatecat' => 'sportbit', 'sortby' => 'pricelow', 'rarity' => 'epic'));
+    $prices['sportbit_epic'] = $sportbit_epic_search['data'][0]['price'];
+    $depths['sportbit_epic'] = floor_depth($sportbit_epic_search);
+    
+    $sportbit_legendary_search = search_marketplace(array('templatecat' => 'sportbit', 'sortby' => 'pricelow', 'rarity' => 'legendary'));
+    $prices['sportbit_legendary'] = ($sportbit_legendary_search['data'][0]['price'] > 0) ? $sportbit_legendary_search['data'][0]['price'] : 0;
+    $depths['sportbit_legendary'] = floor_depth($sportbit_legendary_search);
+    
+    foreach($prices as $item => $price)
+    {
+        $price = number_format($price, 2, '.', '');
+        $prices[$item] = $price;
+    }
+    
+    return array('prices' => $prices, 'depths' => $depths);
 }
 
 function get_num_sportvatars_in_db($rarity = '')

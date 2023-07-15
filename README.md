@@ -15,6 +15,7 @@ A [https://sportvatar.com](Sportvatar) fan site started during [Flow Hackathon S
 - View Sportvatars by equipped Sportbit
 - Trait and Sportbit usage statistics
 - Gallery of famous look-a-like Sportvatars
+- Realtime [official marketplace](https://sportvatar.com/marketplace) floor prices and depth
 - Scheduled scripts to pull data from the Sportvatar API and Flow Blockchain
     - Sportvatar templates usage stats
     - Metadata for new and recently updated Sportvatars

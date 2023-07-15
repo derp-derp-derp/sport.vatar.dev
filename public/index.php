@@ -396,10 +396,17 @@ h1 { color: <?= $rarity_color ?>; }
                     <td><a class="main-navigation-card" href="questions-answers.php">Questions &amp; Answers</a></td>
                     <td><a class="main-navigation-card" href="traits.php?view=least_used">50 Least Used Traits</a></td>
                     <td><a class="main-navigation-card" href="traits.php">50 Most Used Traits</a></td>
+                    <td><a class="main-navigation-card" href="market-current-floor-prices.php">Current Floor Prices<br>(load time ~10 seconds)</a></td>
+                </tr>
+                <tr>
                     <td style="vertical-align: middle !important;">
-                        <h2 style="padding: 25px 0 0 0; color: #ffffff;" class="mobile-only">- More fun coming soon! -</h2>
+                        <h2 style="padding: 25px 0 0 0; color: #ffffff;" class="mobile-only">- More coming soon! -</h2>
                         &#160;
                     </td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
                 </tr>
             </table>
             
