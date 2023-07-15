@@ -163,8 +163,6 @@ h1 { color: <?= $rarity_color ?>; }
                 
             if($sportvatar_index_found){
                 $highlights = generate_highlights($sportvatar_index);
-                $ability = (($sportvatar_index['ability']/2)/5)+0;
-                $ability = sprintf("%0.1f", $ability);
             ?>
             
             <table class="col-3 faux-responsive-table">

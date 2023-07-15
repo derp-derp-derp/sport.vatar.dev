@@ -54,11 +54,32 @@ if(is_numeric($mint) && ($mint <= $num_sportvatars))
     FROM sportvatars AS t1
     WHERE t1.mint_number=". $mint .";";
     
-    if ($result = $conn->query($sql)){
+    if ($result = $conn->query($sql))
+    {
         $sportvatar_index = $result->fetch_array(MYSQLI_ASSOC);
         $sportvatar_index_found = true;
         $result->close();
     }
+}
+
+$metadata = array(
+    'image' => 'https://sport.vatar.dev/assets/img/social/og-image.png',
+    'title' => 'Sportvatar Collector & Fan Site - Sport.vatar.dev',
+    'url' => 'https://sport.vatar.dev',
+    'description' => 'Sportvatar profiles, collection leaderboards, extended rarity scoring, galleries, highlights, Sportbit filtering, and more!'
+);
+
+if($sportvatar_index_found)
+{
+    $ability = (($sportvatar_index['ability']/2)/5)+0;
+    $ability = sprintf("%0.1f", $ability);
+
+    $metadata = array(
+        'image' => 'https://images.sportvatar.com/sportvatar/png/'. $mint .'.png?last_updated='. strtotime($sportvatar_index['last_update_date']),
+        'title' => 'Sportvatar #'. $mint .' '. ucfirst($sportvatar_index['rarity_name']) .' '. $ability,
+        'url' => 'https://sport.vatar.dev/?mint='. $mint,
+        'description' => 'This unique Sportvatar has an extended rarity score of '. sprintf("%0.1f", $sportvatar_index['rarity_score_total']+0) .'!'
+    );
 }
 ?>
 <!DOCTYPE html>
@@ -67,9 +88,36 @@ if(is_numeric($mint) && ($mint <= $num_sportvatars))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>SPORT.VATAR.dev</title>
-
+    <meta name="description" content="<?php echo $metadata['description']; ?>">
+    <meta name="author" content="derp">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<?php echo $metadata['title']; ?>">
+    <meta property="og:description" content="<?php echo $metadata['description']; ?>">
+    <meta property="og:url" content="<?php echo $metadata['url']; ?>">
+    <meta property="og:site_name" content="Sport.vatar.dev">
+    <meta property="og:image" content="<?php echo $metadata['image']; ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="<?php echo $metadata['title']; ?>">
+    <meta property="og:image:type" content="image/png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo $metadata['title']; ?>">
+    <meta name="twitter:description" content="<?php echo $metadata['description']; ?>">
+    <meta name="twitter:site" content="@Sportvatar">
+    <meta name="twitter:creator" content="@derp3x">
+    <meta name="twitter:image" content="<?php echo $metadata['image']; ?>">
+    
     <link rel="shortcut icon" href="./favicon.ico">
+    <link rel="icon" href="./favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="./favicon-16x16.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="manifest" href="./site.webmanifest">
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     
@@ -80,6 +128,8 @@ if(is_numeric($mint) && ($mint <= $num_sportvatars))
     <script src="./assets/js/jquery-3.7.0.min.js"></script>
     <script src="./assets/js/datatables.min.js"></script>
     <script src="./assets/js/dataTables.fixedHeader.min.js"></script>
+    
+    <title><?php echo $metadata['title']; ?></title>
 </head>
 
 <body>
