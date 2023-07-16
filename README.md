@@ -1,6 +1,6 @@
 # Sport.vatar.dev
 
-A [https://sportvatar.com](Sportvatar) fan site started during [Flow Hackathon Season 2 of 2023](https://flow-hackathon-s2.devfolio.co/) to enhance and further gamify the user experience for Sportvatar users and collectors.
+A [Sportvatar](https://sportvatar.com) desktop and mobile compatible web app started during [Flow Hackathon Season 2 of 2023](https://flow-hackathon-s2.devfolio.co/) to enhance and further gamify the user experience for Sportvatar fans and collectors.
 
 ***
 
@@ -16,7 +16,7 @@ A [https://sportvatar.com](Sportvatar) fan site started during [Flow Hackathon S
 - Trait and Sportbit usage statistics
 - Gallery of famous look-a-like Sportvatars
 - Realtime [official marketplace](https://sportvatar.com/marketplace) floor prices and depth
-- Statistics
+- Statistics for Sportvatars, collections, and the [official marketplace](https://sportvatar.com/marketplace)
 - Scheduled scripts to pull data from the Sportvatar API and Flow Blockchain
     - Sportvatar templates usage stats
     - Metadata for new and recently updated Sportvatars
