@@ -29,7 +29,7 @@ div.highlights_container {
     border: 1px solid #ddfc60;
     border-radius: 10px;
     position: relative;
-    width: 95%;
+    width: 97%;
     height: 175px;
     margin: 0 auto;
     -moz-box-sizing: border-box;
@@ -384,29 +384,27 @@ h1 { color: <?= $rarity_color ?>; }
             
             <h1 class="welcome-message">Enter mint # &uarr; or select &darr;</h1>
             
-            <table class="faux-responsive-table col-5 index-navigation">
+            <table class="faux-responsive-table col-4 index-navigation">
                 <tr>
                     <td><a class="main-navigation-card" href="ranking-top-100-sportvatars.php">Top 100 Sportvatars</a></td>
                     <td><a class="main-navigation-card" href="ranking-top-100-collections.php">Top 100 Collections</a></td>
                     <td><a class="main-navigation-card" href="ranking-top-100-sportvatars-native.php">Top 100 Sportvatars<br>(by native abilities score)</a></td>
                     <td><a class="main-navigation-card" href="ranking-top-100-collections-native.php">Top 100 Collections<br>(by native abilities scores)</a></td>
-                    <td><a class="main-navigation-card" href="sportbits.php">Sportvatars by Sportbit</a></td>
                 </tr>
                 <tr>
+                    <td><a class="main-navigation-card" href="sportbits.php">Sportvatars by Sportbit</a></td>
                     <td><a class="main-navigation-card" href="gallery-famous.php">Famous Sportvatars</a></td>
                     <td><a class="main-navigation-card" href="questions-answers.php">Questions &amp; Answers</a></td>
                     <td><a class="main-navigation-card" href="traits.php?view=least_used">50 Least Used Traits</a></td>
-                    <td><a class="main-navigation-card" href="traits.php">50 Most Used Traits</a></td>
-                    <td><a class="main-navigation-card" href="stats.php">Statistics</a></td>
                 </tr>
                 <tr>
                     <td><a class="main-navigation-card" href="market-current-floor-prices.php">Current Floor Prices<br>(load time ~10 seconds)</a></td>
+                    <td><a class="main-navigation-card" href="traits.php">50 Most Used Traits</a></td>
+                    <td><a class="main-navigation-card" href="stats.php">Statistics</a></td>
                     <td style="vertical-align: middle !important;">
                         <h2 style="padding: 25px 0 0 0; color: #ffffff;" class="mobile-only">- More coming soon! -</h2>
                         &#160;
                     </td>
-                    <td>&#160;</td>
-                    <td>&#160;</td>
                     <td>&#160;</td>
                 </tr>
             </table>
