@@ -653,6 +653,8 @@ function get_stats()
     
     $stats = array();
     
+    $stats[] = 'Sportvatars';
+    
     $days_since_launch = ceil(abs(time() - strtotime('May 5th, 2023')) / 86400);
     $stats[] = array(
         'stat' => 'Days since launch',
