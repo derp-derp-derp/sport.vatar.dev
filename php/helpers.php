@@ -636,3 +636,167 @@ function generate_highlights($sportvatar)
     
     return $highlights;
 }
+
+function get_stats()
+{
+    global $conn;
+    global $num_sportvatars;
+    global $num_common_sportvatars;
+    global $num_rare_sportvatars;
+    global $num_epic_sportvatars;
+    global $num_legendary_sportvatars;
+    
+    //$sparks_count_mp = (function() { $search_mp = search_marketplace(array('templateid' => 458)); return $search_mp['total']; })();
+    //$boosters_rare_count_mp = (function() { $search_mp = search_marketplace(array('templateid' => 75)); return $search_mp['total']; })();
+    //$boosters_epic_count_mp = (function() { $search_mp = search_marketplace(array('templateid' => 73)); return $search_mp['total']; })();
+    //$boosters_legendary_count_mp = (function() { $search_mp = search_marketplace(array('templateid' => 74)); return $search_mp['total']; })();
+    
+    $stats = array();
+    
+    $days_since_launch = ceil(abs(time() - strtotime('May 5th, 2023')) / 86400);
+    $stats[] = array(
+        'stat' => 'Days since launch',
+        'amount' => $days_since_launch,
+        'extra' => 'May 5th, 2023'
+    );
+    
+    $stats[] = array(
+        'stat' => 'Total Mints',
+        'amount' => $num_sportvatars,
+        'extra' => '<a href="https://sportvatar.com/locker-room" target="_blank" class="text_link">Locker Room</a>'
+    );
+    
+    $stats[] = array(
+        'stat' => 'Common Mints',
+        'amount' => $num_common_sportvatars,
+        'extra' => '<a href="https://sportvatar.com/locker-room#rarity=common" target="_blank" class="text_link">Locker Room Commons</a>'
+    );
+    
+    $stats[] = array(
+        'stat' => 'Rare Mints',
+        'amount' => $num_rare_sportvatars,
+        'extra' => '<a href="https://sportvatar.com/locker-room#rarity=rare" target="_blank" class="text_link">Locker Room Rares</a>'
+    );
+    
+    $stats[] = array(
+        'stat' => 'Epic Mints',
+        'amount' => $num_epic_sportvatars,
+        'extra' => '<a href="https://sportvatar.com/locker-room#rarity=epic" target="_blank" class="text_link">Locker Room Epics</a>'
+    );
+    
+    $stats[] = array(
+        'stat' => 'Legendary Mints',
+        'amount' => $num_legendary_sportvatars,
+        'extra' => '<a href="https://sportvatar.com/locker-room#rarity=legendary" target="_blank" class="text_link">Locker Room Legendaries</a>'
+    );
+    
+    $stats[] = array(
+        'stat' => 'Mints on day 1 (May 5th, 2023 UTC)',
+        'amount' => 292,
+        'extra' => '<a href="https://sportvatar.com/locker-room#sortby=dateold" target="_blank" class="text_link">Locker Room Oldest First</a>'
+    );
+    
+    $stats[] = array(
+        'stat' => 'Average mints per day since day 2',
+        'amount' => number_format((($num_sportvatars - 292)/($days_since_launch - 1)),1),
+        'extra' => '-'
+    );
+    
+    $with_sportbits_equipped = general_query("SELECT COUNT(*) AS sportbits_equipped_count FROM sportvatars WHERE sportbit_accessory_id > 0;");
+    
+    $stats[] = array(
+        'stat' => 'Mints w/ Sportbits equipped',
+        'amount' => $with_sportbits_equipped[0]['sportbits_equipped_count'],
+        'extra' => '<a href="sportbits.php" class="text_link">Filter by Sportbit</a>'
+    );
+    
+    $stats[] = 'Collections';
+    
+    $unique_collections = general_query("SELECT COUNT(DISTINCT(owner_flow_address)) AS collections_count FROM sportvatars WHERE sportbit_accessory_id > 0;");
+    
+    $stats[] = array(
+        'stat' => 'Collections w/ 1+ Sportvatars',
+        'amount' => $unique_collections[0]['collections_count'],
+        'extra' => '<a href="ranking-top-100-collections.php" class="text_link">Top 100 Collections</a>'
+    );
+    
+    $unopened_packs = general_query("SELECT SUM(packs) AS packs_count FROM collections;");
+    
+    $stats[] = array(
+        'stat' => 'Held Unopened Packs',
+        'amount' => $unopened_packs[0]['packs_count'],
+        'extra' => '<a href="ranking-top-100-collections.php" class="text_link">Top 100 Collections</a>'
+    );
+    
+    $stats[] = array(
+        'stat' => 'Average Sportvatars per Collection',
+        'amount' => ceil($num_sportvatars / $unique_collections[0]['collections_count']),
+        'extra' => '<a href="ranking-top-100-collections.php" class="text_link">Top 100 Collections</a>'
+    );
+    
+    $stats[] = 'Marketplace';
+    
+    $market_stats_official = curl_request_contents('https://sportvatar.com/api/marketplace/stats');
+    $market_stats_official = json_decode($market_stats_official, true);
+
+    $stats[] = array(
+        'stat' => 'Total Sales',
+        'amount' => '$'. number_format($market_stats_official['total'], 2),
+        'extra' => '<a href="https://sportvatar.com/marketplace" target="_blank" class="text_link">Marketplace</a>'
+    );
+    
+    $stats[] = array(
+        'stat' => 'Average Sale',
+        'amount' => '$'. number_format($market_stats_official['avg'], 2),
+        'extra' => '<a href="https://sportvatar.com/marketplace" target="_blank" class="text_link">Marketplace</a>'
+    );
+    
+    $stats[] = array(
+        'stat' => 'Number of Sales',
+        'amount' => number_format($market_stats_official['count'], 2)+0,
+        'extra' => '<a href="https://sportvatar.com/marketplace" target="_blank" class="text_link">Marketplace</a>'
+    );
+    
+    $stats[] = array(
+        'stat' => 'Highest Sale',
+        'amount' => '$'. number_format($market_stats_official['max'], 2),
+        'extra' => '<a href="https://sportvatar.com/marketplace" target="_blank" class="text_link">Marketplace</a>'
+    );
+    
+    $sportvatars_on_sale = search_marketplace(array('templatecat' => 'sportvatar'));
+    $stats[] = array(
+        'stat' => 'Sportvatars Currently on Sale',
+        'amount' => $sportvatars_on_sale['total'] . ' (' . number_format((($sportvatars_on_sale['total'] / $num_sportvatars) * 100), 2) . '%)',
+        'extra' => '<a href="https://sportvatar.com/marketplace#templatecat=sportvatar" target="_blank" class="text_link">Marketplace</a>'
+    );
+    
+    $common_sportvatars_on_sale = search_marketplace(array('templatecat' => 'sportvatar', 'rarity' => 'common'));
+    $stats[] = array(
+        'stat' => 'Common Sportvatars Currently on Sale',
+        'amount' => $common_sportvatars_on_sale['total'] . ' of '. $num_common_sportvatars .' (' . number_format((($common_sportvatars_on_sale['total'] / $num_common_sportvatars) * 100), 2) . '%)',
+        'extra' => '<a href="https://sportvatar.com/marketplace#templatecat=sportvatar&rarity=common" target="_blank" class="text_link">Commons Marketplace</a>'
+    );
+    
+    $rare_sportvatars_on_sale = search_marketplace(array('templatecat' => 'sportvatar', 'rarity' => 'rare'));
+    $stats[] = array(
+        'stat' => 'Rare Sportvatars Currently on Sale',
+        'amount' => $rare_sportvatars_on_sale['total'] . ' of '. $num_rare_sportvatars .' (' . number_format((($rare_sportvatars_on_sale['total'] / $num_rare_sportvatars) * 100), 2) . '%)',
+        'extra' => '<a href="https://sportvatar.com/marketplace#templatecat=sportvatar&rarity=rare" target="_blank" class="text_link">Rares Marketplace</a>'
+    );
+    
+    $epic_sportvatars_on_sale = search_marketplace(array('templatecat' => 'sportvatar', 'rarity' => 'epic'));
+    $stats[] = array(
+        'stat' => 'Epic Sportvatars Currently on Sale',
+        'amount' => $epic_sportvatars_on_sale['total'] . ' of '. $num_epic_sportvatars .' (' . number_format((($epic_sportvatars_on_sale['total'] / $num_epic_sportvatars) * 100), 2) . '%)',
+        'extra' => '<a href="https://sportvatar.com/marketplace#templatecat=sportvatar&rarity=epic" target="_blank" class="text_link">Epics Marketplace</a>'
+    );
+    
+    $legendary_sportvatars_on_sale = search_marketplace(array('templatecat' => 'sportvatar', 'rarity' => 'legendary'));
+    $stats[] = array(
+        'stat' => 'Legendary Sportvatars Currently on Sale',
+        'amount' => $legendary_sportvatars_on_sale['total'] . ' of '. $num_legendary_sportvatars .' (' . number_format((($legendary_sportvatars_on_sale['total'] / $num_legendary_sportvatars) * 100), 2) . '%)',
+        'extra' => '<a href="https://sportvatar.com/marketplace#templatecat=sportvatar&rarity=legendary" target="_blank" class="text_link">Legendaries Marketplace</a>'
+    );
+    
+    return $stats;
+}
