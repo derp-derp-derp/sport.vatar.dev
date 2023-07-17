@@ -1,6 +1,8 @@
 # Sport.vatar.dev
 
-A [Sportvatar](https://sportvatar.com) desktop and mobile compatible web app started during [Flow Hackathon Season 2 of 2023](https://flow-hackathon-s2.devfolio.co/) to enhance and further gamify the user experience for Sportvatar fans and collectors.
+A responsive web app for [Sportvatar](https://sportvatar.com) fans and collectors to further gamify and enhance the Sportvatar user experience.
+
+Initial development began during the [Flow Hackathon Season 2 of 2023](https://flow-hackathon-s2.devfolio.co/).
 
 ***
 
