@@ -31,8 +31,8 @@ img.sportvatar {
                 <th data-orderable="false">Preview</th>
                 <th>Abilities<br>Score</th>
                 <th data-orderable="false">Owner</th>
-                <th>Score<br>Traits</th>
-                <th>Score<br>Sportbits</th>
+                <th>Traits<br>Score</th>
+                <th>Sportbits<br>Score</th>
                 <th>Created</th>
                 <th>Updated</th>
                 <th data-orderable="false">View</th>
