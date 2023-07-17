@@ -105,6 +105,12 @@ h1 { color: <?= $rarity_color ?>; }
     font-family: monospace !important;
 }
 
+    #abilities_detail span {
+        font-family: "Korolev-Compressed-Bold";
+        display: block;
+        margin-bottom: 10px;
+    }
+
     #abilities_detail_expand {
         cursor: pointer;
         font-size: 100%;
@@ -189,7 +195,7 @@ h1 { color: <?= $rarity_color ?>; }
                         <table id="index-stats-table" class="no-collapse">
                             <tr>
                                 <td>
-                                    Abilities Avg.&nbsp;<a id="abilities_detail_expand">+</a>
+                                    Abilities &nbsp;<a id="abilities_detail_expand">+</a>
                                 </td>
                                 <td style="color: <?= $rarity_color; ?>;">
                                     <?= $ability; ?>
@@ -197,6 +203,8 @@ h1 { color: <?= $rarity_color ?>; }
                             </tr>
                             <tr>
                                 <td colspan="2" id="abilities_detail">
+                                    <span>Avg. of Sportvatar.com scores:</span>
+                                    
                                     Power: <?= $sportvatar_index['stat_power']/2; ?><br>
                                     Speed: <?= $sportvatar_index['stat_speed']/2; ?><br>
                                     Endurance: <?= $sportvatar_index['stat_endurance']/2; ?><br>
