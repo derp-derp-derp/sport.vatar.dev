@@ -10,7 +10,7 @@ if(isset($_GET['sportbit_id']))
 
 if(is_numeric($sportbit_id))
 {
-    $sportvatars = general_query('SELECT * FROM sportvatars WHERE sportbit_accessory_id='. $sportbit_id .' ORDER BY rarity_score_total DESC;');
+    $sportvatars = general_query('SELECT * FROM sportvatars WHERE sportbit_accessory_id='. $sportbit_id .';');
     
     if(!$sportbit = get_template($sportbit_id))
     {
@@ -90,7 +90,6 @@ $(document).ready(function(){
     data_table_conf.language = { emptyTable: "D'oh! No Sportvatars have this Sportbit equipped." };
 
     $('#data-table').DataTable( data_table_conf );
-
 });
 </script>
 <?php require_once 'template/footer.php'; ?>
