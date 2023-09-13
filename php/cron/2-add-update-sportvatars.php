@@ -12,7 +12,7 @@ if($json_all = curl_request_contents($json_all_url))
     {
         $sportvatar_is_new = $sportvatar['flow_id'] > $num_sportvatars;
         
-        $sportvatar_is_updated = updated_within_interval('-192 hours', $sportvatar['updated_at']);
+        $sportvatar_is_updated = updated_within_interval('-8 hours', $sportvatar['updated_at']);
 
         if($sportvatar_is_new || $sportvatar_is_updated)
         {
