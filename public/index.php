@@ -94,7 +94,7 @@ h1 { color: <?= $rarity_color ?>; }
 }
 
 #index-stats-table tr td.stats-span {
-    font-size: 300%;
+    font-size: 225%;
     text-align: center;
 }
 
@@ -189,7 +189,7 @@ h1 { color: <?= $rarity_color ?>; }
                         
                         <?php } // end foreach($highlights as $highlight) ?>
                     </td>
-                    <td style="font-size: 125%;">
+                    <td>
                         <h2 class="sportvatar">RARITY SCORES</h2>
                         
                         <table id="index-stats-table" class="no-collapse">
@@ -328,7 +328,7 @@ h1 { color: <?= $rarity_color ?>; }
     }
     //echo highlight_string(print_r($mint_templates,true),true);
 ?>
-                    <td style="font-size: 125%;">
+                    <td>
                         <br class="mobile-only">
                         <h2 class="sportvatar">
                             TRAITS&#160;&#160;
