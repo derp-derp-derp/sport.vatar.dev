@@ -287,9 +287,19 @@ h1 { color: <?= $rarity_color ?>; }
                         <?php
                             $combination_string = $sportvatar_index['builder_combination'];
                             
+                            if($sportvatar_index['sportbit_hat_id'] > 0)
+                            {
+                                $combination_string .= '-L10_'.$sportvatar_index['sportbit_hat_id'];
+                            }
+                            
                             if($sportvatar_index['sportbit_accessory_id'] > 0)
                             {
                                 $combination_string .= '-L12_'.$sportvatar_index['sportbit_accessory_id'];
+                            }
+                            
+                            if($sportvatar_index['sportbit_number_id'] > 0)
+                            {
+                                $combination_string .= '-L13_'.$sportvatar_index['sportbit_number_id'];
                             }
                         ?>
                         
@@ -348,7 +358,9 @@ h1 { color: <?= $rarity_color ?>; }
                         </table>
                         <?php
                             if($sportvatar_index['rarity_score_sportbits'] > 0){
+                                $sportbit_hat = get_template($sportvatar_index['sportbit_hat_id']);
                                 $sportbit_accessory = get_template($sportvatar_index['sportbit_accessory_id']);
+                                $sportbit_number = get_template($sportvatar_index['sportbit_number_id']);
                         ?>
                         
                         <h2 class="sportvatar">
@@ -363,6 +375,19 @@ h1 { color: <?= $rarity_color ?>; }
                             <tr><td colspan="2">&#160;</td></tr>
                             <tr>
                                 <td style="text-align: left; width: 15%;">
+                                    <strong>Hat</strong>
+                                </td>
+                                <td style="text-align: left; color: <?= $colors[ $sportbit_hat['rarity'] ]; ?>;">
+                                    <?= $sportbit_hat['name']; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; width: 15%;"><?= get_sportbit_rarity_score($sportvatar_index['sportbit_hat_other_sportvatar_count']+1); ?> points</td>
+                                <td style="text-align: left;">(<a href="sportbit-sportvatars.php?sportbit_id=<?= $sportvatar_index['sportbit_hat_id']; ?>" class="text_link">on <?= $sportvatar_index['sportbit_hat_other_sportvatar_count']; ?> other Sportvatars</a>)</td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="text-align: left; width: 15%;">
                                     <strong>Accessory</strong>
                                 </td>
                                 <td style="text-align: left; color: <?= $colors[ $sportbit_accessory['rarity'] ]; ?>;">
@@ -373,6 +398,20 @@ h1 { color: <?= $rarity_color ?>; }
                                 <td style="text-align: left; width: 15%;"><?= get_sportbit_rarity_score($sportvatar_index['sportbit_accessory_other_sportvatar_count']+1); ?> points</td>
                                 <td style="text-align: left;">(<a href="sportbit-sportvatars.php?sportbit_id=<?= $sportvatar_index['sportbit_accessory_id']; ?>" class="text_link">on <?= $sportvatar_index['sportbit_accessory_other_sportvatar_count']; ?> other Sportvatars</a>)</td>
                             </tr>
+                            
+                            <tr>
+                                <td style="text-align: left; width: 15%;">
+                                    <strong>Number</strong>
+                                </td>
+                                <td style="text-align: left; color: <?= $colors[ $sportbit_number['rarity'] ]; ?>;">
+                                    <?= $sportbit_number['name']; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; width: 15%;"><?= get_sportbit_rarity_score($sportvatar_index['sportbit_number_other_sportvatar_count']+1); ?> points</td>
+                                <td style="text-align: left;">(<a href="sportbit-sportvatars.php?sportbit_id=<?= $sportvatar_index['sportbit_number_id']; ?>" class="text_link">on <?= $sportvatar_index['sportbit_number_other_sportvatar_count']; ?> other Sportvatars</a>)</td>
+                            </tr>
+                            
                             <tr><td colspan="2">&#160;</td></tr>
                         </table>
                         

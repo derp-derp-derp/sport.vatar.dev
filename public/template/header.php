@@ -48,7 +48,9 @@ if(is_numeric($mint) && ($mint <= $num_sportvatars))
                 t1.trait_facial_hair_id,
                 t1.trait_hair_id,
                 t1.trait_eyes_id,
-                t1.sportbit_accessory_id
+                t1.sportbit_hat_id,
+                t1.sportbit_accessory_id,
+                t1.sportbit_number_id
             )
         ) AS templates_data
     FROM sportvatars AS t1

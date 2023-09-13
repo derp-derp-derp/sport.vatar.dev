@@ -3,7 +3,9 @@ require_once(__DIR__.'/../config.php');
 require_once(__DIR__.'/../helpers.php');
 
 $sportbit_types = array(
-    'accessory'
+    'hat',
+    'accessory',
+    'number'
 );
 
 $updates_queries = '';

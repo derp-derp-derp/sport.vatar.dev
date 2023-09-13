@@ -10,7 +10,7 @@ if(isset($_GET['sportbit_id']))
 
 if(is_numeric($sportbit_id))
 {
-    $sportvatars = general_query('SELECT * FROM sportvatars WHERE sportbit_accessory_id='. $sportbit_id .';');
+    $sportvatars = general_query('SELECT * FROM sportvatars WHERE sportbit_hat_id='. $sportbit_id .' OR sportbit_accessory_id='. $sportbit_id .' OR sportbit_number_id='. $sportbit_id .';');
     
     if(!$sportbit = get_template($sportbit_id))
     {

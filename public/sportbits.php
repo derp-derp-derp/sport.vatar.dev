@@ -60,7 +60,7 @@
             
 <table class="faux-responsive-table col-10 card-navigator">
 <?php
-    $sportbits = general_query("SELECT name, rarity, flow_id FROM templates WHERE category LIKE '%sportbit_accessory%' ORDER BY FIELD(rarity,'common','rare','epic','legendary'), name ASC");
+    $sportbits = general_query("SELECT name, rarity, flow_id FROM templates WHERE category LIKE '%sportbit_hat%' OR category LIKE '%sportbit_accessory%' OR category LIKE '%sportbit_number%' ORDER BY FIELD(rarity,'common','rare','epic','legendary'), name ASC");
     
     $total_items = count($sportbits);
     $items_per_row = 10;

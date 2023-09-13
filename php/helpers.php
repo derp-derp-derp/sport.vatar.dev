@@ -48,9 +48,10 @@ $layers_map = array(
     'layer_7' => 'trait_hair',
     'layer_8' => 'trait_eyes',
     'layer_9' => '',
-    'layer_10' => '',
+    'layer_10' => 'sportbit_hat',
     'layer_11' => '',
-    'layer_12' => 'sportbit_accessory'
+    'layer_12' => 'sportbit_accessory',
+    'layer_13' => 'sportbit_number'
 );
 
 $num_sportvatars = get_num_sportvatars_in_db();
@@ -126,6 +127,7 @@ $gallery_famous = array(
     array('mint' => 426, 'rarity' => 'rare',   'name' => 'Diego Maradona'),
     array('mint' => 587, 'rarity' => 'rare',   'name' => 'Pierluigi Collina'),
     array('mint' => 586, 'rarity' => 'rare',   'name' => 'Stephan El Shaarawy'),
+    array('mint' => 841, 'rarity' => 'common',   'name' => 'Alex Greenwood'),
     
     'Golf',
     array('mint' => 767, 'rarity' => 'common', 'name' => 'Tiger Woods'),
@@ -704,7 +706,7 @@ function get_stats()
         'extra' => '-'
     );
     
-    $with_sportbits_equipped = general_query("SELECT COUNT(*) AS sportbits_equipped_count FROM sportvatars WHERE sportbit_accessory_id > 0;");
+    $with_sportbits_equipped = general_query("SELECT COUNT(*) AS sportbits_equipped_count FROM sportvatars WHERE sportbit_hat_id > 0 OR sportbit_accessory_id > 0 OR sportbit_number_id > 0;");
     
     $stats[] = array(
         'stat' => 'Mints w/ Sportbits equipped',
@@ -714,7 +716,7 @@ function get_stats()
     
     $stats[] = 'Collections';
     
-    $unique_collections = general_query("SELECT COUNT(DISTINCT(owner_flow_address)) AS collections_count FROM sportvatars WHERE sportbit_accessory_id > 0;");
+    $unique_collections = general_query("SELECT COUNT(DISTINCT(owner_flow_address)) AS collections_count FROM sportvatars;");
     
     $stats[] = array(
         'stat' => 'Collections w/ 1+ Sportvatars',

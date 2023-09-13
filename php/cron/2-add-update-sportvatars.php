@@ -12,7 +12,7 @@ if($json_all = curl_request_contents($json_all_url))
     {
         $sportvatar_is_new = $sportvatar['flow_id'] > $num_sportvatars;
         
-        $sportvatar_is_updated = updated_within_interval('-8 hours', $sportvatar['updated_at']);
+        $sportvatar_is_updated = updated_within_interval('-192 hours', $sportvatar['updated_at']);
 
         if($sportvatar_is_new || $sportvatar_is_updated)
         {
@@ -43,14 +43,29 @@ if($json_all = curl_request_contents($json_all_url))
             $trait_facial_hair_id = $sportvatar['facialHair'];
             $trait_hair_id = $sportvatar['hair'];
             $trait_eyes_id = $sportvatar['eyes'];
+            $sportbit_hat_id = 0;
             $sportbit_accessory_id = 0;
+            $sportbit_number_id = 0;
+            
+            if($sportvatar['hat'] > 0)
+            {
+                $sportbit_hat_id = $sportvatar['hat'];
+            }
             
             if($sportvatar['accessory'] > 0)
             {
                 $sportbit_accessory_id = $sportvatar['accessory'];
             }
+            
+            if($sportvatar['number'] > 0)
+            {
+                $sportbit_number_id = $sportvatar['number'];
+            }
                 
+            $sportbit_hat_other_sportvatar_count = 0; // this gets updated by the next scheduled script
             $sportbit_accessory_other_sportvatar_count = 0; // this gets updated by the next scheduled script
+            $sportbit_number_other_sportvatar_count = 0; // this gets updated by the next scheduled script
+            
             $mint_date = $sportvatar['created_at'];
             $last_update_date = $sportvatar['updated_at'];
             
@@ -76,8 +91,12 @@ if($json_all = curl_request_contents($json_all_url))
                     trait_facial_hair_id,
                     trait_hair_id,
                     trait_eyes_id,
+                    sportbit_hat_id,
+                    sportbit_hat_other_sportvatar_count,
                     sportbit_accessory_id,
                     sportbit_accessory_other_sportvatar_count,
+                    sportbit_number_id,
+                    sportbit_number_other_sportvatar_count,
                     mint_date,
                     last_update_date) VALUES (";
                     
@@ -102,8 +121,12 @@ if($json_all = curl_request_contents($json_all_url))
                     $sql .= $trait_facial_hair_id.",";
                     $sql .= $trait_hair_id.",";
                     $sql .= $trait_eyes_id.",";
+                    $sql .= $sportbit_hat_id.",";
+                    $sql .= $sportbit_hat_other_sportvatar_count.",";
                     $sql .= $sportbit_accessory_id.",";
                     $sql .= $sportbit_accessory_other_sportvatar_count.",";
+                    $sql .= $sportbit_number_id.",";
+                    $sql .= $sportbit_number_other_sportvatar_count.",";
                     $sql .= "'".$mint_date."',";
                     $sql .= "'".$last_update_date."'";
                     $sql .= ");";

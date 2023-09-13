@@ -21,16 +21,30 @@ require_once(__DIR__.'/../helpers.php');
             $trait_eyes_score = get_trait_rarity_score($sportvatar['trait_eyes_id']);
             
             // Default value for sportbits since they are optional
+            $sportbit_hat_score = 0;
             $sportbit_accessory_score = 0;
+            $sportbit_number_score = 0;
 
+            if($sportvatar['sportbit_hat_id'] > 0)
+            {
+                // add 1 to include the "self" sportvatar for scoring purposes
+                $sportbit_hat_score = get_sportbit_rarity_score($sportvatar['sportbit_hat_other_sportvatar_count']+1);
+            }
+            
             if($sportvatar['sportbit_accessory_id'] > 0)
             {
                 // add 1 to include the "self" sportvatar for scoring purposes
                 $sportbit_accessory_score = get_sportbit_rarity_score($sportvatar['sportbit_accessory_other_sportvatar_count']+1);
             }
+            
+            if($sportvatar['sportbit_number_id'] > 0)
+            {
+                // add 1 to include the "self" sportvatar for scoring purposes
+                $sportbit_number_score = get_sportbit_rarity_score($sportvatar['sportbit_number_other_sportvatar_count']+1);
+            }
 
             $rarity_score_traits = ($trait_body_score + $trait_clothing_score + $trait_nose_score + $trait_mouth_score + $trait_facial_hair_score + $trait_hair_score + $trait_eyes_score);
-            $rarity_score_sportbits = $sportbit_accessory_score;
+            $rarity_score_sportbits = $sportbit_hat_score + $sportbit_accessory_score + $sportbit_number_score;
             
             $rarity_score_total = ($rarity_score_traits + $rarity_score_sportbits + ($sportvatar['ability']/2/5));
 
