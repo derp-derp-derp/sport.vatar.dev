@@ -88,6 +88,7 @@ $gallery_famous = array(
     array('mint' => 731, 'rarity' => 'common', 'name' => 'Steve Nash'),
     
     'Celebrity',
+    array('mint' => 972, 'rarity' => 'legendary', 'name' => 'Hulk Hogan'),
     array('mint' => 378, 'rarity' => 'common', 'name' => 'Chuck Norris'),
     array('mint' => 732, 'rarity' => 'common', 'name' => 'Bam Margera'),
     
@@ -109,9 +110,9 @@ $gallery_famous = array(
     array('mint' => 530, 'rarity' => 'common', 'name' => 'Bobby Boucher Jr. (Waterboy)'),
     array('mint' => 428, 'rarity' => 'rare',   'name' => 'Stewie Griffin (Family Guy)'),
     array('mint' => 429, 'rarity' => 'rare',   'name' => 'Ned Flanders (The Simpsons)'),
+    array('mint' => 970, 'rarity' => 'rare',   'name' => 'Rocky Balboa'),
     
     'Fighting',
-    array('mint' => 970, 'rarity' => 'rare',   'name' => 'Rocky Balboa'),
     array('mint' => 534, 'rarity' => 'common', 'name' => 'Tyson Fury'),
     array('mint' => 808, 'rarity' => 'common', 'name' => 'Mike Tyson'),
     array('mint' => 281, 'rarity' => 'common', 'name' => 'Georges St-Pierre'),
