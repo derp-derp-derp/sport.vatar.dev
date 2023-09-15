@@ -111,6 +111,7 @@ $gallery_famous = array(
     array('mint' => 429, 'rarity' => 'rare',   'name' => 'Ned Flanders (The Simpsons)'),
     
     'Fighting',
+    array('mint' => 970, 'rarity' => 'rare',   'name' => 'Rocky Balboa'),
     array('mint' => 534, 'rarity' => 'common', 'name' => 'Tyson Fury'),
     array('mint' => 808, 'rarity' => 'common', 'name' => 'Mike Tyson'),
     array('mint' => 281, 'rarity' => 'common', 'name' => 'Georges St-Pierre'),
