@@ -254,7 +254,7 @@ if($name_length >= 11){
     
     <div id="imageContainer">
         <div style="height: 892px; background-color: #ffffff; border: 6px solid #000000; margin: 54px 54px 0 54px;">
-            <div style="height: 867px; border: 3px solid #000000; margin: 6px; overflow: hidden; background-image: url('https://flovatar.com/api/image/template/<?= $background; ?>'); background-size: auto 100%; background-position: center bottom;">
+            <div style="height: 867px; border: 3px solid #000000; margin: 6px; overflow: hidden; background-image: url('https://flovatar.com/api/image/template/<?= $background; ?>'); background-size: auto 101%; background-position: center 55px;">
                 
                 <div style="height: 87px; background-color: #1b2023; color: #ffffff; text-align: center; float: left; width: 25%; margin: 0 auto; font-family: 'Shantell Sans', cursive; font-size: 30px; line-height: 30px;">
                     <img src="../assets/img/sportvatar-logo.svg" style="width: 70%; margin: 10px auto 0 auto;"><br>
