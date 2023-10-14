@@ -455,11 +455,7 @@ h1 { color: <?= $rarity_color ?>; }
                     <td><a class="main-navigation-card" href="market-current-floor-prices.php">Current Floor Prices<br>(load time ~10 seconds)</a></td>
                     <td><a class="main-navigation-card" href="stats.php">Statistics</a></td>
                     <td><a class="main-navigation-card" href="questions-answers.php">Questions &amp; Answers</a></td>
-                    <td style="vertical-align: middle !important;">
-                        <h2 style="padding: 25px 0 0 0; color: #ffffff;" class="mobile-only">- More coming soon! -</h2>
-                        &#160;
-                    </td>
-                    <td>&#160;</td>
+                    <td><a class="main-navigation-card" href="trading-card">Trading Card Creator</a></td>
                 </tr>
             </table>
             
